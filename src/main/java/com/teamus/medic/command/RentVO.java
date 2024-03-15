@@ -1,17 +1,23 @@
 package com.teamus.medic.command;
 
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EquipVO {
+@Builder
+public class RentVO {
 	
-	private String ISTR_CODE;
-	private int ISTR_NO;
 	private String ISTR_NM;
-	private int ISTR_QTY;
+	private String USER_NO;
+	private int RNTL_QTY;
+	private String RNTL_YMD;
+	
+	
 }
