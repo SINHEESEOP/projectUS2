@@ -1,0 +1,46 @@
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programReg.css">
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+
+	 <div class="wrap">
+      <div class="reg-title">
+        <p>프로그램 신청하기</p>
+      </div>
+        <form action="programUserForm" method="post">
+      <div class="reg-content">
+        <div>
+          <p>프로그램 명칭 : </p>
+          <div><input type="text" name="EVNT_NM" th:value="${vo.EVNT_NM}"></div>
+          <input type="hidden" name="EVNT_NO" th:value="${vo.EVNT_NO}">
+        </div>
+        <div>
+        	<p>학번 : </p>
+        	<div><input type="text" name="USER_NO" th:value="${user.USER_NO}"></div>
+        </div>
+         <div>
+        	<p>학과 : </p>
+        	<div><input type="text" name="SCSBJT_NM" th:value=${user.SCSBJT_NM}></div>
+        </div>
+        <div>
+          <p>이름 : </p>
+          <div><input type="text" name="USER_NM" th:value=${user.USER_NM}></div>
+        </div>
+        <div>
+          <p>이메일 : </p>
+          <div><input type="text" name="USER_EML_ADDR" th:value=${user.USER_EML_ADDR}></div>
+        </div>
+         <div>
+          <p>전화번호 : </p>
+          <div><input type="text" name="USER_TELNO" th:value=${user.USER_TELNO}></div>
+        </div>
+        </div>
+        <div class="reg-button">
+        <input type="submit" value="신청하기" class="reg">
+        <button type="button" class="list">목록</button>
+      </div>
+        </form>
+    </div>
+</html>
