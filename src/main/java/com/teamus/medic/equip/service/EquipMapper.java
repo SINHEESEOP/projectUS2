@@ -20,6 +20,10 @@ public interface EquipMapper {
 
 	public String getCode(String structure);
 
+	public EquipVO getDetail(String code);
+
+	
+
 	
 
 	

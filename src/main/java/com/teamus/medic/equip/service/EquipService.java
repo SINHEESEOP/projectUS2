@@ -11,6 +11,10 @@ public interface EquipService {
 
 	public String getCode(String structure);
 
+	public EquipVO getDetail(String code);
+
+	
+
 	
 
 	

@@ -22,4 +22,7 @@
 		
 		)
 	</insert>
+	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
+		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
+	</select>
 </mapper>  

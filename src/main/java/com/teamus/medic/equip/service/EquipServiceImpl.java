@@ -32,6 +32,15 @@ public class EquipServiceImpl implements EquipService{
 		return equipMapper.getCode(structure);
 	}
 
+	@Override
+	public EquipVO getDetail(String code) {
+		
+		return equipMapper.getDetail(code);
+	}
+
+	
+	
+
 	
 
 	

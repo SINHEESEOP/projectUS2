@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
 </head>
 <body>
 	<h3>의료기기 리스트페이지</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>등록번호</th>
+				<th>코드명</th>
+				<th>품명</th>
+				<th>수량</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="vo,status: ${equipList}">
+				<td>[[${vo.ISTR_NO}]]</td>
+				<td><a href="#" class="listA">[[${vo.ISTR_CODE}]]</a></td>
+				<td>[[${vo.ISTR_NM}]]</td>
+				<td>[[${vo.ISTR_QTY}]]</td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="button" onclick="moveFoward()">닫기</button>
+	
+	<script>
+		function moveFoward(){
+			window.close();
+			
+		}
+		
+		
+		$(".listA").click(function(e){
+					 e.preventDefault();
+			function popup(){
+				var code=$(e.target).text();
+				var url ="popup?code="+code;
+				var name ="의료기기 리스트";
+				var option ="width=800,length=500,top=100,left=200,location=yes";
+				window.open(url,name,option);
+
+			}
+			popup();
+			/* $.ajax({
+				url : "viewDetail",
+				data : JSON.stringify({
+					code : $(e.target).text()
+				}),
+				contentType : "application/json",
+				dataType : "html",
+				type : "POST",
+				success :function(data){
+					popup(data);
+				},
+				error : function(err,status){
+					console.log(err,status);
+				}
+			}); */
+
+		})
+
+
+		
+
+
+	</script>
 </body>
 </html>
