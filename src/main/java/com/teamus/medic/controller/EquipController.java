@@ -73,18 +73,20 @@ public class EquipController {
 	@PostMapping("/rentRegForm")
 	public String rentRegForm(RentVO vo) {
 		
-		//RNTL_NM을 기반으로 ISTR_NM과 같은물품의 VO를 조회
-		//ISTR_QTY-RNTLQTY <0
+		
+		String rntName=vo.getISTR_NM();
+		EquipVO vo2=equipService.getIstr(rntName);
+		if(vo2.getISTR_QTY()<vo.getRNTL_QTY()) {
+			return "equip/ss";
+		}else {
+			vo2.setISTR_QTY(vo2.getISTR_QTY()-vo.getRNTL_QTY());
+			equipService.updateIstr(vo2);
+			equipService.rentReg(vo);
+			return "equip/ss";
+		}
 		
 		
-		System.out.println(vo.getRNTL_QTY());
-		String structure=vo.getISTR_NM();
-		String istrCode=equipService.getCode(structure);
-		vo.setISTR_NM(istrCode);
 		
-		
-		
-		return "equip/ss";
 	}
 	
 //	@PostMapping(value = "/viewDetail")

@@ -38,6 +38,26 @@ public class EquipServiceImpl implements EquipService{
 		return equipMapper.getDetail(code);
 	}
 
+	@Override
+	public EquipVO getIstr(String rntName) {
+		
+		return equipMapper.getIstr(rntName);
+	}
+
+	@Override
+	public void updateIstr(EquipVO vo2) {
+		
+		equipMapper.updateIstr(vo2);
+		
+	}
+
+	@Override
+	public void rentReg(RentVO vo) {
+		
+		equipMapper.rentReg(vo);
+		
+	}
+
 	
 	
 

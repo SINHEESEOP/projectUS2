@@ -13,6 +13,12 @@ public interface EquipService {
 
 	public EquipVO getDetail(String code);
 
+	public EquipVO getIstr(String rntName);
+
+	public void updateIstr(EquipVO vo2);
+
+	public void rentReg(RentVO vo);
+
 	
 
 	

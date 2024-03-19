@@ -22,6 +22,14 @@
 		
 		)
 	</insert>
+	<select id="getIstr" resultType="com.teamus.medic.command.EquipVO">
+		select * FROM MEDVC_INFO where ISTR_NM= #{rntName}
+	</select>
+	<update id="updateIstr">
+		update MEDVC_INFO
+		set ISTR_QTY=#{ISTR_QTY}
+		where ISTR_NM=#{ISTR_NM}
+	</update>
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
 		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
 	</select>
