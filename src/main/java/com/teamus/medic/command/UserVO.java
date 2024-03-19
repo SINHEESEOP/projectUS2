@@ -2,7 +2,6 @@ package com.teamus.medic.command;
 
 import com.teamus.medic.utill.Search;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +31,6 @@ public class UserVO {
 	public UserVO(Search search) {
 		this.search = search;
 	}
+
+
 }

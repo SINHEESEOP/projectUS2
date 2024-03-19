@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+  .header {
+      border-bottom: 2px solid #ccc;
+      height: 70px;
+      line-height: 70px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #1b2536;
+    }
+
+    .header .title {
+      font-size: 30px;
+      margin-left: 70px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .section {
+      width: 100%;
+      display: flex;
+    }
+
+    .middle-info {
+      width: 1650px;
+      background-color: rgba(43, 119, 218, 0.856);
+      height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 50px;
+      box-sizing: border-box;
+    }
+
+    .info-title {
+      margin-bottom: 10px;
+    }
+
+    .info-title > span{
+      font-size: 30px;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .info-middle > span {
+      margin-top: 30px;
+      font-size: 20px;
+      color: white;
+      font-weight: 500;
+
+    }
+
+
+    .sidenav{
+      width: 300px;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      background-color: #1b2536;
+    }
+
+    .sidenav .menu {
+    
+      height: 70px;
+      line-height: 70px;
+      font-weight: bold;
+      font-size: 15px;
+      color: #ccc;
+    }
+    
+    .sidenav .menu1 a {
+    color:white;
+    text-decoration: none;
+    }
+
+
+    .sidenav .menu > span {
+      margin-left: 15px;
+    }
+
+    .sidenav .menu1 {
+      height: 60px;
+      line-height: 60px;
+    }
+
+    .sidenav .menu1-content {
+      display: none;
+    }
+
+    .sidenav .menu1 > span {
+      margin-left: 40px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .sidenav .menu2 {
+      height: 60px;
+      line-height: 60px;
+    }
+
+    .sidenav .menu2-content {
+      display: none;
+    }
+
+    .sidenav .menu2 > span {
+      margin-left: 40px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .sidenav .menu3 {
+      height: 60px;
+      line-height: 60px;
+    }
+
+    .sidenav .menu3-content {
+      display: none;
+    }
+
+    .sidenav .menu3 > span {
+      margin-left: 40px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .sidenav .menu4 {
+      height: 60px;
+      line-height: 60px;
+    }
+
+    .sidenav .menu4-content {
+      display: none;
+    }
+
+    .sidenav .menu4 > span {
+      margin-left: 40px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #ccc;
+    }

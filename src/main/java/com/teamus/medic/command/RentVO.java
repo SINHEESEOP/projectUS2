@@ -1,0 +1,23 @@
+package com.teamus.medic.command;
+
+import java.sql.Timestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class RentVO {
+	
+	private String ISTR_NM;
+	private String USER_NO;
+	private int RNTL_QTY;
+	private String RNTL_YMD;
+	
+	
+}
