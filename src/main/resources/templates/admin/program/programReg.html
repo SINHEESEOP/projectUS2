@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programReg.css">
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+
+	 <div class="wrap">
+      <div class="reg-title">
+        <p>프로그램 등록하기</p>
+      </div>
+        <form action="programForm" method="post">
+      <div class="reg-content">
+        <div>
+          <p>프로그램 명칭 : </p>
+          <div><input type="text" name="EVNT_NM"></div>
+        </div>
+        <div>
+          <p>신청시작일 : </p>
+          <div><input type="date" name="EVNT_APLY_BGNG_YMD" pattern="\d{4}-\d{2}-\d{2}"></div>
+        </div>
+        <div>
+          <p>신청마감일 : </p>
+          <div><input type="date" name="EVNT_APLY_END_YMD" pattern="\d{4}-\d{2}-\d{2}"></div>
+        </div>
+         <div>
+          <p>프로그램장소 : </p>
+          <div><input type="text" name="EVNT_PLC_NM"></div>
+        </div>
+        <!-- 
+        <div>
+          <p>프로그램 종류 : </p>
+          <div><select name="" id="">
+            <option>비만클리닉</option>
+            <option>금연클리닉</option>
+          </select>
+        </div>
+        </div>
+         -->
+        <div>
+          <p>프로그램 시작일 : </p>
+          <div><input type="date" name="EVNT_BGNG_YMD" pattern="\d{4}-\d{2}-\d{2}"></div>
+        </div>
+        <div>
+          <p>프로그램 종료일 : </p>
+          <div><input type="date" name="EVNT_END_YMD" pattern="\d{4}-\d{2}-\d{2}"></div>
+        </div>
+      </div>
+      <div class="info">
+        <p>프로그램 내용 : </p>
+        <div><textarea cols="30" rows="10" name="EVNT_CN"></textarea></div>
+      </div>
+      
+      <div class="reg-button">
+        <input type="submit" value="등록" class="reg">
+        <button type="button" class="list">목록</button>
+      </div>
+        </form>
+    </div>
+</html>

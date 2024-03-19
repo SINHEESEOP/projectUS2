@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamus.medic.equip.service.EquipMapper">
+	<select id="getCount" resultType="Integer">
+		SELECT count(*) FROM MEDVC_INFO
+	</select>
+	<select id="getData" resultType="com.teamus.medic.command.EquipVO">
+		SELECT * FROM MEDVC_INFO where ISTR_NO = #{i}
+	</select>
+	<select id="getCode" resultType="String">
+		SELECT ISTR_CODE FROM MEDVC_INFO WHERE ISTR_NM=#{structure}
+	</select>
+	<insert id="rentReg">
+		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY,RNTL_YMD)
+		values(
+			#{USER_NO},
+			#{ISTR_CODE},
+			#{RNTL_QTY},
+			#{RNTL_YMD}
+		
+		)
+	</insert>
+	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
+		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
+	</select>
+</mapper>  

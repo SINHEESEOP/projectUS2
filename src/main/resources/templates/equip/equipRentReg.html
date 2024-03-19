@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+	<h2>의료기기 대여등록 페이지</h2>
+	<div>
+		<table>
+			<tr>
+				<th>물품명</th>
+				<th>잔여</th>
+			</tr>
+			<tr th:each="vo,status : ${equipList}">
+				<td>[[${vo.ISTR_NM}]]</td>
+				<td>[[${vo.ISTR_QTY}]]</td>							
+			</tr>
+		</table>
+	</div>
+	<form action="rentRegForm" method="post">
+		<p>학번</p>
+		<input type="text" value="12345678" readonly="readonly" name="USER_NO" id="USER_NO">
+		
+		<p>대여물품을 선택하세요</p>
+		<select name="ISTR_NM" id="ISTR_SEC">
+		
+		<th:block th:each="vo : ${equipList}">
+			
+			<script>
+				$("#ISTR_SEC").change(function(e){
+					$("#ISTR_NM_BIG").html($(e.target).val());		
+				});
+			</script>
+			<option>
+				[[${vo.ISTR_NM}]]
+			</option>
+			
+			
+		</th:block>
+			
+		</select>
+		<p id="ISTR_NM_BIG"></p>
+		
+		<p>대여 갯수</p>
+		<input type="number" name="RNTL_QTY">
+		
+		
+		<p>대여 일자</p>
+		<input type="date" name="RNTL_YMD">
+		<p></p>
+		<input type="submit" value="등록">
+	</form>
+</body>
+	<script th:inline="javascript">
+	
+	</script>
+</html>
