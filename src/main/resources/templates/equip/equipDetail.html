@@ -8,6 +8,9 @@
 </head>
 <body>
 	<h1>상세페이지</h1>
+		<div>
+			<img alt="st" src="" class="detailImg">
+		</div>
 	<table>
 		<tr>
 			<th>품명</th>
@@ -20,9 +23,7 @@
 			<td>[[${vo.ISTR_QTY}]]</td>
 		</tr>		
 	</table>
-	<div th:with="src1=1">
-		<img alt="st" src="" class="detailImg">
-	</div>
+	<button type="button" class="closeBtn">닫기</button>
 	<section>
 		<div>
 			<div>
@@ -35,4 +36,16 @@
 	</section>
 
 </body>
+<script th:inline="javascript">
+ 
+	var code = '[[${vo.ISTR_CODE}]]'.replace("\"","").replace("\"","");
+	console.log(code)
+	var imgRoute="/img/".concat(code).concat(".jpg");
+	console.log(imgRoute)
+	$(".detailImg").attr("src",imgRoute);
+	
+	$(".closeBtn").click(function(){
+		window.close();
+	});
+</script>
 </html>

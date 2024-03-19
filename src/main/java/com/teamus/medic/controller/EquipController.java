@@ -73,6 +73,11 @@ public class EquipController {
 	@PostMapping("/rentRegForm")
 	public String rentRegForm(RentVO vo) {
 		
+		//RNTL_NM을 기반으로 ISTR_NM과 같은물품의 VO를 조회
+		//ISTR_QTY-RNTLQTY <0
+		
+		
+		System.out.println(vo.getRNTL_QTY());
 		String structure=vo.getISTR_NM();
 		String istrCode=equipService.getCode(structure);
 		vo.setISTR_NM(istrCode);
