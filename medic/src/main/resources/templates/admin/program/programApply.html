@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programList.css">
+
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+	
+	<div class="wrap">
+     <div class="reg-title">
+        <p>프로그램 신청내역</p>
+      </div>
+    <div class="middle">
+      <div class="total">
+        <p>총 게시글 수 : 200</p>
+      </div>
+      <div class="search">
+        <form action="">
+        <select name="" id="">
+          <option value="">제목</option>
+          <option value="">내용</option>
+        </select>
+        <input type="text">
+       <button type="button">검색</button>
+      </form>
+      </div>
+    </div>
+      <table class="content-wrap">
+          <tr class="first">
+            <td>학번</td>
+            <td>이름</td>
+            <td>전화번호</td>
+            <td>이메일</td>
+            <td>학과</td>
+            <td>신청프로그램</td>
+            <td>수락여부</td>
+          </tr>
+          <th:block th:each="vo,status : ${list}">
+        <tr>
+        	<td>[[${vo.USER_NO}]]</td>
+        	<td>[[${vo.USER_NM}]]</td>
+        	<td>[[${vo.USER_TELNO}]]</td>
+        	<td>[[${vo.USER_EML_ADDR}]]</td>
+        	<td>[[${vo.SCSBJT_NM}]]</td>
+        	<td>[[${vo.EVNT_NM}]]</td>
+           <td><button id="btn" class="update" th:onclick="|location.href='@{applyUpdate(EVNT_REG_NO=${vo.EVNT_REG_NO})}'|">수락</button>
+          </td>
+          </th:block>
+      </table>
+      <div class="page-wrap">
+        <span><a href="#">◁</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">▷</a></span>
+       </div>
+  </div>
+</html>		
