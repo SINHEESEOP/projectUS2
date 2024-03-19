@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	
+	<style>
+		.search {
+			border: 1px solid gray;
+			width: 100%;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		
+		.listMenu {
+			display: flex;
+			width: 100%;
+		}
+		
+		p {
+			text-align: center;
+			margin-right: 500px;
+			width: 10%;
+		}
+		
+		p:hover {
+			color: green;
+		}
+		
+		table, td, th {
+			border: 1px solid gray;
+			text-align: center;
+			border-collapse: collapse;
+		}
+		
+		th, td {
+			width: 10%;
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="search">
+	<div class="search-Bno">
+		사용자 번호(학번, 교번) : <input type="text" name="mdexmBno">
+		<button onclick="showPopup()">검색</button>
+	</div>
+	<div>
+		학생 이름(사용자명) : <input type="text" name="userNm" readonly>
+	</div>
+	<div>
+		사용자 이메일주소 : <input type="text" name="userEmlAddr" readonly>
+	</div>
+	<div>
+		직책명 : <input type="text" name="jbttlNm" readonly>
+	</div>
+	<div>
+		흡연여부 : <input type="text" name="smkYn" readonly>
+	</div>
+	<div>
+		확과명 : <input type="text" name="scsbjtNm" readonly>
+	</div>
+</div>
+
+<hr>
+
+<div style="border-bottom : 1px solid gray" class="listMenu">
+	<p class="">진료 기록</p>
+	<p class="">뭐 넣지?(토글)</p>
+</div>
+
+<br>
+<table>
+	
+	<tr>
+		<th>질병 번호</th>
+		<th>진료 일자</th>
+		<th>진료 내용</th>
+		<th>처방 내용</th>
+		<th>수량</th>
+		<th>사용자 번호(학교, 교번)</th>
+		<th>질병 코드</th>
+	</tr>
+	
+	<tr>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+	</tr>
+	
+	<tr>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+		<td>vo.~~</td>
+	</tr>
+
+</table>
+
+
+<script th:inline="javascript">
+	let msg = `[[${msg}]]`
+	// msg = JSON.parse(msg);
+	// "null" 이라 json 으로 변환 시 "" 가 벗겨짐.
+	// 그렇게 되면 굳이 아래에서 'null' 로 체크 안해줘도 된다~
+	
+	if (msg == 'null') {
+		console.log('똥꾸멍멍멍')
+	} else {
+		alert(msg)
+	}
+	
+	function showPopup() {
+		window.open("popup", "a", "width=690, height=500, top=150, left=200");
+	}
+	
+	document.getElementById()
+
+</script>
+
+</body>
+</html>
