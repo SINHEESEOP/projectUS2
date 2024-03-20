@@ -3,19 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/programList.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+	body{
+		background-color: cadetblue;
+	}
+	form {
+		background-color: rgb(100, 147, 235);
+		color: yellow;
+	}
+	form > select > option{
+		font-size: 20px;
+	}
+	form > p{
+		font-size: 16px;
+		font-weight: 700;
+	}
+	input{
+		width: 160px;
+		height: 25px;
+		font-size: 14px;
+		
+	}
+</style>
 </head>
 
 <body>
 	<script>
-		window.resizeTo(800, 600);
+		window.resizeTo(900, 1000);
+		
 	</script>
-	<h2>의료기기 대여등록 페이지</h2>
+	<section class="wrap2">
+	<h2 class="reg-title">의료기기 대여등록 페이지</h2>
 	<div>
-		<table>
-			<tr>
-				<th>물품명</th>
-				<th>잔여</th>
+		<table class="content-wrap">
+			<tr class="first">
+				<td>물품명</td>
+				<td>잔여</td>
 			</tr>
 			<tr th:each="vo,status : ${equipList}">
 				<td>[[${vo.ISTR_NM}]]</td>
@@ -25,7 +50,7 @@
 	</div>
 	<form action="rentRegForm" method="post">
 		<p>학번</p>
-		<input type="text" value="12345678" readonly="readonly" name="USER_NO" id="USER_NO">
+		<input type="text" value="" readonly="readonly" name="USER_NO" id="USER_NO">
 		
 		<p>대여물품을 선택하세요</p>
 		<select name="ISTR_NM" id="ISTR_SEC">
@@ -52,10 +77,24 @@
 		
 		
 		<p>대여 일자</p>
-		<input type="date" name="RNTL_YMD">
+		<input type="date" name="RNTL_YMD" value="" id="dateDefault">
 		<p></p>
-		<input type="submit" value="등록">
+		<input type="submit" value="등록" class="sBtn">
+		<input type="button" value="닫기" id="closeBtn" class="sBtn">
 	</form>
+	</section>
 </body>
-	
+	<script>
+		$(".wrap2").css({
+			"width" : "800",
+			"margin":"0 auto"
+		});
+		$("#closeBtn").click(function(){
+			window.close();
+		});
+		var currentUser=sessionStorage.getItem("currentUser");
+		$("#USER_NO").attr("value",currentUser);
+		
+		
+	</script>
 </html>

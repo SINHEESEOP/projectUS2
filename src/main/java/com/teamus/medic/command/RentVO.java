@@ -19,6 +19,7 @@ public class RentVO {
 	private String USER_NO;
 	private int RNTL_QTY;
 	private String RNTL_YMD;
+	private String ISTR_CODE;
 	
 	
 }

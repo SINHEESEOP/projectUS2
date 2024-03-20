@@ -13,12 +13,11 @@
 		SELECT ISTR_CODE FROM MEDVC_INFO WHERE ISTR_NM=#{structure}
 	</select>
 	<insert id="rentReg">
-		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY,RNTL_YMD)
+		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY)
 		values(
 			#{USER_NO},
 			#{ISTR_CODE},
-			#{RNTL_QTY},
-			#{RNTL_YMD}
+			#{RNTL_QTY}
 		
 		)
 	</insert>

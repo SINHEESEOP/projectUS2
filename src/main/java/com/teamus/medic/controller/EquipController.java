@@ -79,12 +79,10 @@ public class EquipController {
 	public String toEquipReturn(@RequestParam("user")String userNo,Model model) {
 		System.out.println(userNo);
 		RentVO vo=equipService.getRntlList(userNo);
-		if(vo==null) {
-			return "equip/equipRentReg";
-		}else {
+		if(vo!=null) {
 			model.addAttribute("vo",vo);
-			return "equip/equipReturn";
 		}
+		return "equip/equipReturn";
 		
 		
 	}
@@ -96,12 +94,15 @@ public class EquipController {
 		
 		
 		String rntName=vo.getISTR_NM();
+		
 		EquipVO vo2=equipService.getIstr(rntName);
+		System.out.println(vo2.toString());
 		if(vo2.getISTR_QTY()<vo.getRNTL_QTY()) {
 			return "equip/equipHome";
 		}else {
 			vo2.setISTR_QTY(vo2.getISTR_QTY()-vo.getRNTL_QTY());
 			equipService.updateIstr(vo2);
+			vo.setISTR_CODE(vo2.getISTR_CODE());
 			equipService.rentReg(vo);
 			return "equip/equipHome";
 		}
