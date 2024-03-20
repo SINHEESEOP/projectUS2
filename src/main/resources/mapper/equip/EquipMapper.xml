@@ -33,4 +33,7 @@
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
 		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
 	</select>
+	<select id="getRntlList" resultType="com.teamus.medic.command.RentVO">
+		SELECT * FROM MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}	
+	</select>
 </mapper>  

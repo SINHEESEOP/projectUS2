@@ -8,6 +8,9 @@
 	
 </head>
 <body>
+	<script>
+			window.resizeTo(1400, 600);
+	</script>
 	<section class="wrap">
 	<h3 class="reg-title">의료기기 조회</h3>
 	<table class="content-wrap">
@@ -28,11 +31,11 @@
 			</tr>
 		</tbody>
 	</table>
-	<button type="button" onclick="moveFoward()" class="update">처음으로</button>
+	<button type="button" onclick="closeWindow()" class="update">닫기</button>
 	</section>
 	<script>
-		function moveFoward(){
-			
+		function closeWindow(){
+			window.close();
 			
 		}
 		
@@ -41,9 +44,9 @@
 					 e.preventDefault();
 			function popup(){
 				var code=$(e.target).text();
-				var url ="popup?code="+code;
-				var name ="의료기기 리스트";
-				var option ="width=800,length=500,top=100,left=200,location=yes";
+				var url ="detailPopup?code="+code;
+				var name ="상세보기";
+				var option ="width=300,length=300,top=50,left=25,location=yes";
 				window.open(url,name,option);
 
 			}

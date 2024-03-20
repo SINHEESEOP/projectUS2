@@ -19,6 +19,10 @@ public interface EquipService {
 
 	public void rentReg(RentVO vo);
 
+	public RentVO getRntlList(String userNo);
+
+	
+
 	
 
 	

@@ -58,6 +58,14 @@ public class EquipServiceImpl implements EquipService{
 		
 	}
 
+	@Override
+	public RentVO getRntlList(String userNo) {
+		
+		return equipMapper.getRntlList(userNo);
+	}
+
+	
+
 	
 	
 
