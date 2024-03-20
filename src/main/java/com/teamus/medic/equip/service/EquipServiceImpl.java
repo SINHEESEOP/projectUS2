@@ -64,6 +64,12 @@ public class EquipServiceImpl implements EquipService{
 		return equipMapper.getRntlList(userNo);
 	}
 
+	@Override
+	public int getRntlCount(String userNo) {
+		
+		return equipMapper.getRntlCount(userNo);
+	}
+
 	
 
 	

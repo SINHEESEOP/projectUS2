@@ -31,6 +31,8 @@ public interface EquipMapper {
 
 	public RentVO getRntlList(String userNo);
 
+	public int getRntlCount(String userNo);
+
 	
 
 	

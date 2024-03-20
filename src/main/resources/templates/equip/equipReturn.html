@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/css/programList.css">
 <title>Insert title here</title>
+<style type="text/css">
+	body {
+  		font-family: 'Open Sans', sans-serif;
+  		font-weight: 300;
+  		line-height: 1.42em;
+  		color:yellow;
+  		background-color:#1F2739;
+	}
+
+</style>
 </head>
 <body>
-	<h3>의료기기 반납 페이지</h3>
+	<script>
+		sessionStorage.setItem("currentUser","ST122341");
+		var cuser =sessionStorage.getItem("currentuser")
+		window.resizeTo(1420, 780);
+	</script>
+	<section class="wrap">
+		<h3 class="reg-title">당신의 대여목록</h3>
+		<table>
+			<tr>
+				<td>대여번호</td>
+				<td>대여물품코드</td>
+				<td>대여수량</td>
+				<td>대여일</td>
+				<td>비고</td>
+			</tr>
+			<tr>
+				<td>[[${vo.RNTL_NO}]]</td>
+				<td>[[${vo.ISTR_CODE}]]</td>
+				<td>[[${vo.RNTL_QTY}]]</td>
+				<td>[[${vo.ISTR_YMD}]]</td>
+				<td id=""></td>
+			</tr>
+		</table>
+	
+	</section>
+	
 </body>
 </html>

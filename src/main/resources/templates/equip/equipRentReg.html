@@ -53,7 +53,7 @@
 		<input type="text" value="" readonly="readonly" name="USER_NO" id="USER_NO">
 		
 		<p>대여물품을 선택하세요</p>
-		<select name="ISTR_NM" id="ISTR_SEC">
+		<select name="ISTR_NM" id="ISTR_SEC" required="required">
 		
 		<th:block th:each="vo : ${equipList}">
 			
@@ -73,11 +73,11 @@
 		<p id="ISTR_NM_BIG"></p>
 		
 		<p>대여 갯수</p>
-		<input type="number" name="RNTL_QTY" id="rntlQty">
+		<input type="number" name="RNTL_QTY" id="rntlQty" required="required">
 		
 		
 		<p>대여 일자</p>
-		<input type="date" name="RNTL_YMD" value="" id="dateDefault">
+		<input type="date" name="RNTL_YMD" value="" id="dateDefault" required="required">
 		<p></p>
 		<input type="submit" value="등록" class="sBtn">
 		<input type="button" value="닫기" id="closeBtn" class="sBtn">

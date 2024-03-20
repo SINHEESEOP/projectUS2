@@ -32,6 +32,9 @@
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
 		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
 	</select>
+	<select id="getRntlCount" resultType="Integer">
+		SELECT count(*) from MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}
+	</select>
 	<select id="getRntlList" resultType="com.teamus.medic.command.RentVO">
 		SELECT * FROM MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}	
 	</select>

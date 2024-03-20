@@ -21,6 +21,8 @@ public interface EquipService {
 
 	public RentVO getRntlList(String userNo);
 
+	public int getRntlCount(String userNo);
+
 	
 
 	
