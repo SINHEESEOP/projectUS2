@@ -1,36 +1,54 @@
 @charset "UTF-8";
-
+	
+	body{
+	background-color:#c0c0c0;
+	margin: 0px;
+	font-family: "IBM Plex Sans KR", sans-serif;
+	
+	}
   .header {
-      border-bottom: 2px solid #ccc;
       height: 70px;
       line-height: 70px;
       display: flex;
       justify-content: space-between;
-      background-color: #1b2536;
+      background-color: #2D2A28;
+     box-shadow : 0px 2px 4px 8px;
+     box-sizing:border-box;
     }
 
     .header .title {
-      font-size: 30px;
+      font-size: 25px;
       margin-left: 70px;
       font-weight: bold;
       color: white;
     }
     
+    .header .title2 {
+    	font-size:20px;
+    	color:#606060;
+    	margin-left: 20px;
+    	font-weight:bold;
+    }
+    
+    .headerBtn {
+    margin-right:30px;
+    font-size: 13px;
+    font-weight:600;
+    border:none;
+    border-radius:5px;
+    color:black;
+    background-color: white;
+    margin-top:25px;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    cursor:pointer;
+    }
+    
     .section {
       width: 100%;
       display: flex;
+      background-color:white;
     }
 
-    .middle-info {
-      width: 1650px;
-      background-color: rgba(43, 119, 218, 0.856);
-      height: 230px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 50px;
-      box-sizing: border-box;
-    }
 
     .info-title {
       margin-bottom: 10px;
@@ -54,24 +72,29 @@
 
     .sidenav{
       width: 300px;
-      height: 1000px;
+      height: 1150px;
       display: flex;
       flex-direction: column;
-      background-color: #1b2536;
+      background-color: #DEDEDE;
     }
 
     .sidenav .menu {
     
-      height: 70px;
-      line-height: 70px;
+      height: 50px;
+      line-height: 50px;
       font-weight: bold;
       font-size: 15px;
-      color: #ccc;
+      color: black;
     }
     
     .sidenav .menu1 a {
-    color:white;
+    color:#606060;
     text-decoration: none;
+    }
+    
+    .sidenav .menu1.orange {
+    
+    color:orange;
     }
 
 
@@ -84,15 +107,11 @@
       line-height: 60px;
     }
 
-    .sidenav .menu1-content {
-      display: none;
-    }
-
     .sidenav .menu1 > span {
       margin-left: 40px;
       font-size: 13px;
       font-weight: bold;
-      color: #ccc;
+      color: black;
     }
 
     .sidenav .menu2 {
@@ -100,31 +119,27 @@
       line-height: 60px;
     }
 
-    .sidenav .menu2-content {
-      display: none;
-    }
 
     .sidenav .menu2 > span {
       margin-left: 40px;
       font-size: 13px;
       font-weight: bold;
-      color: #ccc;
+      color: #606060;
     }
 
     .sidenav .menu3 {
       height: 60px;
       line-height: 60px;
+      padding:0;
     }
 
-    .sidenav .menu3-content {
-      display: none;
-    }
+   
 
     .sidenav .menu3 > span {
       margin-left: 40px;
       font-size: 13px;
       font-weight: bold;
-      color: #ccc;
+      color: #606060;
     }
 
     .sidenav .menu4 {
@@ -132,13 +147,27 @@
       line-height: 60px;
     }
 
-    .sidenav .menu4-content {
-      display: none;
-    }
-
+  
     .sidenav .menu4 > span {
       margin-left: 40px;
       font-size: 13px;
       font-weight: bold;
-      color: #ccc;
+      color: #606060;
+    }
+    
+    .footer {
+    	height:70px;
+    	background-color:#2D2A28; 
+    	padding: 20px;
+    	border-top: 3px solid #ccc; 
+    	box-sizing:content-box;
+    	padding-bottom:40px;
+    }
+    
+    .footer p {
+    	margin: 0;
+    	color : #606060;
+    	font-size:15px;
+    	font-weight: bold;
+    	margin-left:60px;
     }
