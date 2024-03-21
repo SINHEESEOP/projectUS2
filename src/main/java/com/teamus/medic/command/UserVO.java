@@ -19,4 +19,5 @@ public class UserVO {
 	private String SMK_YN;
 	private String JBTTL_NM;
 	private String USER_ROLE;
+  
 }
