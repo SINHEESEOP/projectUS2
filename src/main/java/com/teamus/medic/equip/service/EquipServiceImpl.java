@@ -22,13 +22,13 @@ public class EquipServiceImpl implements EquipService{
 
 	@Override
 	public EquipVO getData(int i) {
-		System.out.println(i);
+		
 		return equipMapper.getData(i);
 	}
 
 	@Override
 	public String getCode(String structure) {
-		System.out.println(structure);
+		
 		return equipMapper.getCode(structure);
 	}
 
@@ -37,6 +37,60 @@ public class EquipServiceImpl implements EquipService{
 		
 		return equipMapper.getDetail(code);
 	}
+
+	@Override
+	public EquipVO getIstr(String rntName) {
+		
+		return equipMapper.getIstr(rntName);
+	}
+
+	@Override
+	public void updateIstr(EquipVO vo2) {
+		
+		equipMapper.updateIstr(vo2);
+		
+	}
+
+	@Override
+	public void rentReg(RentVO vo) {
+		
+		equipMapper.rentReg(vo);
+		
+	}
+
+	@Override
+	public RentVO getRntlList(String userNo) {
+		
+		return equipMapper.getRntlList(userNo);
+	}
+
+	@Override
+	public int getRntlCount(String userNo) {
+		
+		return equipMapper.getRntlCount(userNo);
+	}
+
+	@Override
+	public void updateIstr2(EquipVO vo1) {
+		
+		equipMapper.updateIstr2(vo1);
+		
+	}
+
+	@Override
+	public void deleteRntl(int rntlNo) {
+
+		equipMapper.deleteRntl(rntlNo);
+		
+	}
+
+	@Override
+	public void insertIstr(EquipVO vo) {
+		
+		equipMapper.insertIstr(vo);
+	}
+
+	
 
 	
 	
