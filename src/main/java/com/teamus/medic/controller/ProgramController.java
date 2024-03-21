@@ -16,6 +16,7 @@ import com.teamus.medic.command.ProgramRegVO;
 import com.teamus.medic.command.ProgramVO;
 import com.teamus.medic.command.UserVO;
 import com.teamus.medic.program.service.ProgramService;
+import com.teamus.medic.util.Criteria;
 
 @Controller
 @RequestMapping("/program")
@@ -32,9 +33,9 @@ public class ProgramController {
 	}
 	
 	@GetMapping("/programList")
-	public String programList(Model model) {
+	public String programList(Model model , Criteria cri) {
 		
-		List<ProgramVO> list = programService.getProgramList();
+		List<ProgramVO> list = programService.getProgramList(cri);
 		
 		model.addAttribute("list",list);
 		
@@ -42,9 +43,9 @@ public class ProgramController {
 	}
 	
 	@GetMapping("/programApply")
-	public String programApply(Model model) {
+	public String programApply(Model model, Criteria cri) {
 		
-		List<ProgramRegVO> list = programService.getProgramApplyList();
+		List<ProgramRegVO> list = programService.getProgramApplyList(cri);
 		model.addAttribute("list",list);
 		
 		return "admin/program/programApply";
@@ -88,9 +89,9 @@ public class ProgramController {
 	}
 	
 	@GetMapping("/programUserList")
-	public String programUserList(Model model) {
+	public String programUserList(Model model , Criteria cri) {
 		
-		List<ProgramVO> list = programService.getProgramList();
+		List<ProgramVO> list = programService.getProgramList(cri);
 		
 		model.addAttribute("list", list);
 		
@@ -115,9 +116,9 @@ public class ProgramController {
 	}
 	
 	@GetMapping("/programUserApply")
-	public String programUserApply(Model model) {
+	public String programUserApply(Model model , Criteria cri , @RequestParam("USERNAME") String USERNAME) {
 		
-		List<ProgramRegVO> list = programService.getProgramRegList();
+		List<ProgramRegVO> list = programService.getProgramRegList(USERNAME,cri);
 		model.addAttribute("list",list);
 		
 		return "/user/program/programUserApply";
