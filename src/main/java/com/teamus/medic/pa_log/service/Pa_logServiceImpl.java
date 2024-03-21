@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 @Service("Pa_logService")
 public class Pa_logServiceImpl implements Pa_logService {
+
+	@Autowired
 	private Pa_logMapper paLogMapper;
 	@Override
 	public int regist(Pa_logVO vo) { return paLogMapper.regist(vo); }
