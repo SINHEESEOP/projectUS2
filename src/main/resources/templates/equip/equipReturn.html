@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/css/programList.css">
-<title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>의료기기 반납</title>
 <style type="text/css">
 	body {
   		font-family: 'Open Sans', sans-serif;
@@ -32,15 +33,24 @@
 				<td>비고</td>
 			</tr>
 			<tr>
-				<td>[[${vo.RNTL_NO}]]</td>
-				<td>[[${vo.ISTR_CODE}]]</td>
-				<td>[[${vo.RNTL_QTY}]]</td>
+				<td class="rno">[[${vo.RNTL_NO}]]</td>
+				<td class="rcode">[[${vo.ISTR_CODE}]]</td>
+				<td class="rqty">[[${vo.RNTL_QTY}]]</td>
 				<td>[[${vo.ISTR_YMD}]]</td>
-				<td id=""></td>
+				<td><button type="button" class="returnBtn">반납</button></td>
 			</tr>
 		</table>
 	
 	</section>
-	
+	<script th:inline="javascript">
+		var rno=$(".rno").text();
+		var rqty=$(".rqty").text();
+		var rcode=$(".rcode").text();
+		$(".returnBtn").click(function(){
+			
+			location.href="/equip/returnForm?rntlQty="+rqty+"&rntlNo="+rno+"&istrCode="+rcode;
+			window.close();
+		});
+	</script>
 </body>
 </html>

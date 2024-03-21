@@ -23,6 +23,10 @@ public interface EquipService {
 
 	public int getRntlCount(String userNo);
 
+	public void updateIstr2(EquipVO vo1);
+
+	public void deleteRntl(int rntlNo);
+
 	
 
 	

@@ -29,6 +29,11 @@
 		set ISTR_QTY=#{ISTR_QTY}
 		where ISTR_NM=#{ISTR_NM}
 	</update>
+	<update id="updateIstr2">
+		update MEDVC_INFO
+		set ISTR_QTY=#{ISTR_QTY}
+		where ISTR_CODE=#{ISTR_CODE}
+	</update>
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
 		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
 	</select>
@@ -38,4 +43,7 @@
 	<select id="getRntlList" resultType="com.teamus.medic.command.RentVO">
 		SELECT * FROM MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}	
 	</select>
+	<delete id="deleteRntl">
+		Delete FROM MEDVC_RENT_MGMT WHERE RNTL_NO=#{rntlNo}
+	</delete>
 </mapper>  

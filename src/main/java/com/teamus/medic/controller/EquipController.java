@@ -77,41 +77,51 @@ public class EquipController {
 	
 	@GetMapping("/toEquipReturn")
 	public String toEquipReturn(@RequestParam("user")String userNo,Model model) {
-		System.out.println(userNo);
+		
 		
 		RentVO vo=equipService.getRntlList(userNo);
+		if(vo!=null) {
+			model.addAttribute("vo",vo);			
+			return "/equip/equipReturn";	
+		}else {
+			return "equip/equipClose";
+		}
 		
-		System.out.println(vo.toString());
-		model.addAttribute("vo",vo);
-		
-		
-		
-		
-		return "equip/equipReturn";
 		
 		
 	}
 	
+	@GetMapping("/returnForm")
+	public String returnForm(@RequestParam("rntlQty")int rntlQty,@RequestParam("rntlNo")int rntlNo,@RequestParam("istrCode")String code) {
+	
+		EquipVO vo1=equipService.getDetail(code);
+		int istrqty=vo1.getISTR_QTY();
+		vo1.setISTR_QTY(istrqty+rntlQty);
+		equipService.updateIstr2(vo1);
+		equipService.deleteRntl(rntlNo);
+		
+		return "equip/equipSucc";
+	}
 	
 	@PostMapping("/rentRegForm")
 	public String rentRegForm(RentVO vo) {
 		String user=vo.getUSER_NO();
 		int count=equipService.getRntlCount(user);
 		if(count!=0) {
-			return "equip/equipHome";
+			return "equip/equipClose";
 		}else {
 			String rntName=vo.getISTR_NM();
 			
 			EquipVO vo2=equipService.getIstr(rntName);
-			System.out.println(vo2.toString());
+			
 			if(vo2.getISTR_QTY()<vo.getRNTL_QTY()) {
-				return "equip/equipHome";
+				return "equip/equipClose";
 			}else {
 				vo2.setISTR_QTY(vo2.getISTR_QTY()-vo.getRNTL_QTY());
 				equipService.updateIstr(vo2);
 				vo.setISTR_CODE(vo2.getISTR_CODE());
 				equipService.rentReg(vo);
-				return "equip/equipHome";
+				return "equip/equipSucc";
 			}
 			
 		}
@@ -134,9 +144,9 @@ public class EquipController {
 	
 	@GetMapping("/detailPopup")
 	public String popup(Model model,@RequestParam("code")String code) {
-		System.out.println(code);
+		
 		EquipVO vo=equipService.getDetail(code);
-		System.out.println(vo.toString());
+		
 		model.addAttribute("vo",vo);
 		return "equip/equipDetail";
 	}
