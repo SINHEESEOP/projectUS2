@@ -12,5 +12,7 @@ public interface Pa_logMapper {
 
 	public int regist(Pa_logVO vo); // insert
 	public ArrayList<UserVO> getListPop(Search search);
-
+	public ArrayList<Pa_logVO> getListPaLog(String query);
+	public UserVO getUser(String query);
+	public int logInsert(Pa_logVO vo);
 }

@@ -7,28 +7,59 @@
 
     <insert id="regist">
         insert into PA_LOG(MDEXM_CN,
-                            MDEXM_CN2,
-                            MDEXM_QTY,
-                            USER_NO,
-                            DSS_CODE)
+                           MDEXM_CN2,
+                           MDEXM_QTY,
+                           USERNAME,
+                           DSS_CODE)
         values (#{mdexmCn},
                 #{mdexmCn2},
                 #{mdexmQty},
-                #{userNo},
+                #{USERNAME},
                 #{dssCode})
     </insert>
 
-    <select id="getListPop" resultType="UserVO" >
+    <select id="getListPop" resultType="UserVO">
         select *
         from USER
         where 1 = 1
         <if test="searchName != '' and searchName != null">
-            <![CDATA[and USER_NO like concat('%', #{searchName} ,'%')
+            <![CDATA[and USERNAME like concat('%', #{searchName} ,'%')
                or USER_NM like concat('%', #{searchName} ,'%')]]>
         </if>
-<!--        <if test="searchName != '' and searchName != null">-->
-<!--            <![CDATA[and USER_NM like #{searchName}]]>-->
-<!--        </if>-->
+        <!--        <if test="searchName != '' and searchName != null">-->
+        <!--            <![CDATA[and USER_NM like #{searchName}]]>-->
+        <!--        </if>-->
     </select>
+
+    <select id="getListPaLog" resultType="Pa_logVO">
+        SELECT  MDEXM_BNO,
+                MDEXM_YMD,
+                MDEXM_CN,
+                MDEXM_CN2,
+                MDEXM_QTY,
+                DSS_CODE
+        FROM PA_LOG
+        WHERE USERNAME = #{query}
+    </select>
+
+    <select id="getUser" resultType="UserVO">
+        Select *
+        from user
+        where USERNAME = #{query};
+    </select>
+
+    <!--    USER NO 는 바꿔야할 것임.-->
+    <insert id="logInsert">
+        insert into PA_LOG (MDEXM_CN,
+                            MDEXM_CN2,
+                            MDEXM_QTY,
+                            USERNAME,
+                            DSS_CODE)
+        values (#{MDEXM_CN},
+                #{MDEXM_CN2},
+                #{MDEXM_QTY},
+                #{USERNAME},
+                #{DSS_CODE})
+    </insert>
 
 </mapper>

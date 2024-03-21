@@ -18,5 +18,13 @@ public class Pa_logServiceImpl implements Pa_logService {
 	public ArrayList<UserVO> getListPop(Search search) {
 		return paLogMapper.getListPop(search);
 	}
-
+	public ArrayList<Pa_logVO> getListPaLog(String query) {
+		return paLogMapper.getListPaLog(query);
+	}
+	public UserVO getUser(String query) {
+		return paLogMapper.getUser(query);
+	};
+	public int logInsert(Pa_logVO vo) {
+		return paLogMapper.logInsert(vo);
+	};
 }

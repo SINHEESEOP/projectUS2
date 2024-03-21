@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
-	
 	<style>
 		table {
 			display: flex;
 			width: 100%;
 		}
+		
 		table, td, th {
 			border: 1px solid gray;
 			text-align: center;
 			border-collapse: collapse;
 		}
+		
 		th, td {
 			width: 14%;
 		}
+		
 		.searchName {
 			width: 250px;
 		}
 	</style>
-	
+	<title>학생 검색</title>
 </head>
 <body>
 <form action="popup" name="popup" method="get">
-	사용자 검색 : <input type="text" class="searchName" name="searchName" th:value="${vo.search.setSearchName(vo.search.getSearchName())}"/>
+	사용자 검색 : <input type="text" class="searchName" name="searchName"
+	                th:value="${vo.search.setSearchName(vo.search.getSearchName())}"/>
 	<input type="submit" value="검색">
-	
-	<br>
-	
+</form>
+<br>
+
+<form action="popupList" name="popupList" method="post">
 	<hr>
-	<table>
+	<table id="userTable">
 		
 		<tr>
 			<th>사용자 번호(학번,교번)</th>
@@ -42,25 +45,39 @@
 			<th>학과명</th>
 		</tr>
 		
-		<tr th:each="vo : ${listPop}">
-			<td>[[${vo.USER_NO}]]</td>
-			<td>[[${vo.USER_NM}]]</td>
-			<td>[[${vo.USER_EML_ADDR}]]</td>
-			<td>[[${vo.JBTTL_NM}]]</td>
-			<td>[[${vo.SMK_YN}]]</td>
-			<td>[[${vo.SCSBJT_NM}]]</td>
+		<tr class="tr1" th:each="vo : ${listPop}">
+			<td th:value="${vo.USERNAME}">[[${vo.USERNAME}]]</td>
+			<td th:value="${vo.USER_NM}">[[${vo.USER_NM}]]</td>
+			<td th:value="${vo.USER_EML_ADDR}">[[${vo.USER_EML_ADDR}]]</td>
+			<td th:value="${vo.JBTTL_NM}">[[${vo.JBTTL_NM}]]</td>
+			<td th:value="${vo.SMK_YN}">[[${vo.SMK_YN}]]</td>
+			<td th:value="${vo.SCSBJT_NM}">[[${vo.SCSBJT_NM}]]</td>
 		</tr>
+	
 	
 	</table>
 	<hr>
-	<input type="button" value="확인"/>
 	<input type="button" value="닫기" onclick="self.close()"/>
-
 </form>
+
+<script>
+	
+	document.querySelectorAll(".tr1").forEach((tr) => {
+		tr.addEventListener("click", () => {
+			
+			for (let i = 1; i <= 6; i++) {
+				opener.document.getElementById(i.toString()).value =
+						event.target.parentElement.textContent.trim().split(/\s+/)[i - 1];
+			}
+			
+			opener.processData();
+			window.close();
+			
+		})
+	})
+
+</script>
 
 </body>
 
 </html>
-
-
-
