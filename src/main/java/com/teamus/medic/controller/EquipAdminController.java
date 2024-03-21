@@ -1,4 +1,4 @@
-package com.teamus.medic.controller;
+	package com.teamus.medic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
