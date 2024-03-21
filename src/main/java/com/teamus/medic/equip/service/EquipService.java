@@ -27,6 +27,8 @@ public interface EquipService {
 
 	public void deleteRntl(int rntlNo);
 
+	public void insertIstr(EquipVO vo);
+
 	
 
 	

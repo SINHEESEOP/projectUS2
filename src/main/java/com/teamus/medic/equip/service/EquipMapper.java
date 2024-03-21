@@ -37,6 +37,8 @@ public interface EquipMapper {
 
 	public void deleteRntl(int rntlNo);
 
+	public void insertIstr(EquipVO vo);
+
 	
 
 	

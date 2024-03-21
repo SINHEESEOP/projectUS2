@@ -47,6 +47,7 @@ public class EquipController {
 	}
 	
 	
+	
 	@GetMapping("/toRentReg")
 	public String toRentReg(Model model) {
 		int count=equipService.getCount();

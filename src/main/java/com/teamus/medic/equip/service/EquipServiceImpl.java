@@ -84,6 +84,12 @@ public class EquipServiceImpl implements EquipService{
 		
 	}
 
+	@Override
+	public void insertIstr(EquipVO vo) {
+		
+		equipMapper.insertIstr(vo);
+	}
+
 	
 
 	

@@ -12,6 +12,14 @@
 	<select id="getCode" resultType="String">
 		SELECT ISTR_CODE FROM MEDVC_INFO WHERE ISTR_NM=#{structure}
 	</select>
+	<insert id="insertIstr">
+		INSERT INTO MEDVC_INFO(ISTR_NM,ISTR_CODE,ISTR_QTY)
+		values(
+			#{ISTR_NM},
+			#{ISTR_CODE},
+			#{ISTR_QTY}
+		)
+	</insert>
 	<insert id="rentReg">
 		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY)
 		values(
