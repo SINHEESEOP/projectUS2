@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>물품 상세 페이지</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+	<h1>상세페이지</h1>
+		<div>
+			<img alt="st" src="" class="detailImg">
+		</div>
+	<table>
+		<tr>
+			<th>품명</th>
+			<th>코드번호</th>
+			<th>수량</th>
+		</tr>
+		<tr>
+			<td>[[${vo.ISTR_NM}]]</td>	
+			<td>[[${vo.ISTR_CODE}]]</td>	
+			<td>[[${vo.ISTR_QTY}]]</td>
+		</tr>		
+	</table>
+	<button type="button" class="closeBtn">닫기</button>
+	<section>
+		<div>
+			<div>
+			
+			</div>
+			<div>
+			
+			</div>
+		</div>
+	</section>
+
+</body>
+<script th:inline="javascript">
+ 
+	var code = '[[${vo.ISTR_CODE}]]'.replace("\"","").replace("\"","");
+	console.log(code)
+	var imgRoute="/img/".concat(code).concat(".jpg");
+	console.log(imgRoute)
+	$(".detailImg").attr("src",imgRoute);
+	
+	$(".closeBtn").click(function(){
+		window.close();
+	});
+</script>
+</html>
