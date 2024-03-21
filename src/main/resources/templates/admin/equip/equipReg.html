@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>의료기기 등록</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style type="text/css">
+	body{
+		background-color: rgb(143, 232, 235);
+	}
+	form {
+		background-color: rgb(100, 147, 235);
+		color: rgb(253, 253, 3);
+	}
+	form > select > option{
+		font-size: 20px;
+	}
+	form > p{
+		font-size: 16px;
+		font-weight: 700;
+	}
+	input{
+		width: 160px;
+		height: 25px;
+		font-size: 14px;
+		
+	}
+</style>
+</head>
+	<script type="text/javascript">
+		window.resizeTo(480,370);
+		
+		 /* $(document).ready(function(){
+			var status=sessionStorage.getItem("userStatus");
+			if(!status.equals("Admin")){
+				window.alert("권한이 없습니다.");
+				sessionStorage.setItem("currentUser","");
+				window.close();
+			}else{
+				var currentUser=sessionStorage.getItem("currentUser");
+					if(currentUser==""||currentUser==null){
+						window.alert("세션이 만료되었습니다.");
+						window.close();
+					}
+				
+			}
+			
+		});  */
+	</script>
+<body>
+	<section>
+		<form action="istrRegForm" method="post" name="quote">
+			<p>물품명</p>
+			<input type="text" placeholder="ISTR_NM" name="ISTR_NM" required="required">
+			<p>물품수량</p>
+			<input type="number" placeholder="ISTR_QTY" name="ISTR_QTY" required="required">
+			<p>물품코드(자동생성)</p>
+			<input type="text" placeholder="ISTR_CODE" class="istrCode" readonly="readonly" value="" name="ISTR_CODE">
+			<p></p>
+			<input type="submit" value="등록">
+			<p></p>
+			<input type="button" value="닫기" class="closeBtn">
+		</form>
+		
+	</section>
+</body>
+	<script type="text/javascript">
+		var rng=Math.random().toString(36).substring(2,8).toUpperCase().toString();
+		$(".istrCode").attr("value",rng);
+		
+		$(".closeBtn").click(function(){
+			window.close();
+		});
+	
+		
+	</script>
+</html>
