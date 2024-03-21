@@ -6,11 +6,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style type="text/css">
 	body{
-		background-color: cadetblue;
+		background-color: rgb(143, 232, 235);
 	}
 	form {
 		background-color: rgb(100, 147, 235);
-		color: yellow;
+		color: rgb(253, 253, 3);
 	}
 	form > select > option{
 		font-size: 20px;
@@ -28,8 +28,9 @@
 </style>
 </head>
 	<script type="text/javascript">
-		window.resizeTo(500,200);
-		/* $(document).ready(function(){
+		window.resizeTo(480,370);
+		
+		 /* $(document).ready(function(){
 			var status=sessionStorage.getItem("userStatus");
 			if(!status.equals("Admin")){
 				window.alert("권한이 없습니다.");
@@ -43,22 +44,34 @@
 					}
 				
 			}
-			유효성 검사
-		}); */
+			
+		});  */
 	</script>
 <body>
 	<section>
-		<form action="istrRegForm" method="post">
-			<input type="text" placeholder="ISTR_NM" required="required">
-			<input type="number" placeholder="ISTR_QTY" required="required">
-			<input type="text" placeholder="ISTR_CODE" required="required">
-			<input type="submit" value="등록하기" class="sBtn">
+		<form action="istrRegForm" method="post" name="quote">
+			<p>물품명</p>
+			<input type="text" placeholder="ISTR_NM" name="ISTR_NM" required="required">
+			<p>물품수량</p>
+			<input type="number" placeholder="ISTR_QTY" name="ISTR_QTY" required="required">
+			<p>물품코드(자동생성)</p>
+			<input type="text" placeholder="ISTR_CODE" class="istrCode" readonly="readonly" value="" name="ISTR_CODE">
+			<p></p>
+			<input type="submit" value="등록">
+			<p></p>
+			<input type="button" value="닫기" class="closeBtn">
 		</form>
+		
 	</section>
 </body>
 	<script type="text/javascript">
-		$(".sBtn").click(function(){
+		var rng=Math.random().toString(36).substring(2,8).toUpperCase().toString();
+		$(".istrCode").attr("value",rng);
+		
+		$(".closeBtn").click(function(){
 			window.close();
 		});
+	
+		
 	</script>
 </html>

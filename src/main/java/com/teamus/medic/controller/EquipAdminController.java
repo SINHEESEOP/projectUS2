@@ -29,12 +29,7 @@ public class EquipAdminController {
 	
 	@PostMapping("/istrRegForm")
 	public String istrRegForm(EquipVO vo) {
-		
-		
 		equipService.insertIstr(vo);
-		
-		
-		
-		return "admin/equip/regSucc";
+		return "admin/equip/equipReg";
 	}
 }
