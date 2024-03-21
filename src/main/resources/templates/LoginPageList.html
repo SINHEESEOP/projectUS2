@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    #Logincontainer {width: 750px; margin: 150px auto 0;height: 500px;
+                      height: 400px; text-align: center;}
+
+    #top_p {display: flex; justify-content: center; align-items: center;}
+    #top_p > img {width: 50px; height: 50px;}
+    
+    #Loginlogo{display: flex; justify-content:space-around;}
+    #Loginlogo > div {margin : 10px}
+    .Lologo{background-color:#3765a3; border-radius: 10px; width: 250px; height: 260px;  cursor: pointer;}
+    .Lologo1{background-color:#6abde5; border-radius: 10px; width: 250px; height: 260px; cursor: pointer;}
+    .Lologo2{background-color: #60ba2a; border-radius: 10px; width: 250px; height: 260px; cursor: pointer;}
+ 	.Lologo2 > img {width: 130px}
+ 
+  </style>
+</head>
+<body>
+
+  <section>
+    <div id="Logincontainer">
+      <div id="top_p"> <img src="/img/free-icon-hospital-3252173.png">
+        <p style="font-weight: bold; font-size: 50px; margin-left: 20px; color: blueviolet;">우리 보건실 </p>
+      </div>
+    <div id="Loginlogo">
+      <div class="Lologo" id="adminBtn"><img style="margin-top: 20px;" src="/img/manager_icon.png" ><p style="color: white; font-weight: bold; font-size: 30px;" >관리자 로그인</p></div>
+      <div class="Lologo1" id="userBtn"><img style="margin-top: 20px;" src="/img/student_icon.png" ><p style="color: white; font-weight: bold; font-size: 30px;">학생 로그인</p></div>
+      <div class="Lologo2" id="joinBtn"><img style="margin-top: 20px;" src="/img/free-icon-accept-13430357.png"><p style="color: white; font-weight: bold; font-size: 30px;">회원가입</p></div>
+    </div>
+    <p style="font-size: small; color: #777;">Copyright © 우리보건실. All rights reserved.</p>
+    </div>
+  </section>
+
+	<script>
+    	
+    
+    adminBtn.addEventListener('click',function(){
+    	
+    	
+    	location.href = "/adminLoginPage";
+    	
+    });
+    
+ 	
+    
+    userBtn.addEventListener('click',function(){
+    	
+    	
+    	location.href = "/UserLoginPage";
+    	
+    });
+    
+    	joinBtn.addEventListener('click',function(){
+    	
+    	
+    	location.href = "/join";
+    	
+    });
+    
+    </script>
+
+</body>
+</html>

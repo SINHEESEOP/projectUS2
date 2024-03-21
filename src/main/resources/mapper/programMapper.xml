@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamus.medic.program.service.ProgramMapper">
+
+<insert id="programRegist">
+	INSERT INTO CLNC_LIST(EVNT_NM,EVNT_CN,EVNT_BGNG_YMD,EVNT_END_YMD,EVNT_PLC_NM,EVNT_APLY_BGNG_YMD,EVNT_APLY_END_YMD)
+	VALUES(#{EVNT_NM},#{EVNT_CN},#{EVNT_BGNG_YMD},#{EVNT_END_YMD},#{EVNT_PLC_NM},#{EVNT_APLY_BGNG_YMD}
+								,#{EVNT_APLY_END_YMD})
+</insert> 
+
+ <select id="getProgramList" resultType="ProgramVO">
+ select * 
+ from CLNC_LIST 
+ ORDER BY EVNT_NO DESC
+ limit #{pageStart}, #{amount}
+</select>
+ <select id="getDetail" resultType="programVO">
+ select * from CLNC_LIST WHERE EVNT_NO = #{EVNT_NO}
+</select>
+
+<update id="programUpdate">
+	UPDATE CLNC_LIST SET EVNT_NM = #{EVNT_NM} , EVNT_APLY_BGNG_YMD = #{EVNT_APLY_BGNG_YMD} , EVNT_APLY_END_YMD = #{EVNT_APLY_END_YMD}
+		  , EVNT_BGNG_YMD = #{EVNT_BGNG_YMD} , EVNT_END_YMD = #{EVNT_END_YMD}, EVNT_PLC_NM = #{EVNT_PLC_NM}
+		  , EVNT_CN = #{EVNT_CN} where EVNT_NO = #{EVNT_NO}
+</update>
+
+<delete id="programDelete">
+	delete from CLNC_LIST where EVNT_NO = #{EVNT_NO}
+</delete>
+
+<select id="getProgramRegList" resultType="ProgramRegVO">
+	SELECT * FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
+	LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
+	WHERE U.USERNAME = #{USERNAME}
+	limit #{cri.pageStart}, #{cri.amount};
+
+</select>
+
+<select id="getUser" resultType="UserVO">
+select * from USER where USERNAME = #{USERNAME};
+</select>
+
+<insert id="programUserRegist">
+	insert into CLNC_REG(EVNT_NO,USERNAME)VALUES(#{EVNT_NO} , #{USERNAME})
+</insert>
+
+<delete id="deleteApply">
+	delete from CLNC_REG where EVNT_REG_NO = #{EVNT_REG_NO}
+</delete>
+
+<select id="getProgramApplyList" resultType="programRegVO">
+	SELECT * FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
+	LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
+	<if test='searchContent eq "program"'>
+		where EVNT_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "name"'>
+		where USER_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "department"'>
+		where SCSBJT_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "applyY"'>
+		where EVNT_REG_YN = 'Y'
+	</if>
+	<if test='searchContent eq "applyN" '>
+		where EVNT_REG_YN = 'N'
+	</if>
+	<if test='searchContent eq "successY"'>
+		where EVNT_END_YN = 'Y'
+	</if>
+	<if test='searchContent eq "successN" '>
+		where EVNT_END_YN = 'N'
+	</if>
+	ORDER BY EVNT_REG_NO DESC
+	limit #{pageStart} , #{amount}
+</select>
+
+<update id="applyUpdate">
+	update CLNC_REG set EVNT_REG_YN = 'Y' where EVNT_REG_NO = #{EVNT_REG_NO}
+</update>
+
+<update id="successUpdate">
+	update CLNC_REG set EVNT_END_YN = 'Y' where EVNT_REG_NO = #{EVNT_REG_NO}
+</update>
+
+<select id="getProgramTotal" resultType="int">
+select count(*) as total 
+from CLNC_LIST
+</select>
+
+<select id="getProgramApplyTotal" resultType="int">
+SELECT count(*) FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
+LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO	
+	<if test='searchContent eq "program"'>
+		where EVNT_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "name"'>
+		where USER_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "department"'>
+		where SCSBJT_NM like concat('%',#{searchValue},'%')
+	</if>
+	<if test='searchContent eq "Y"'>
+		where EVNT_REG_YN = 'Y'
+	</if>
+	<if test='searchContent eq "N"'>
+		where EVNT_REG_YN = 'N'
+	</if>
+	<if test='searchContent eq "successY"'>
+		where EVNT_END_YN = 'Y'
+	</if>
+	<if test='searchContent eq "successN" '>
+		where EVNT_END_YN = 'N'
+	</if>
+</select>
+
+<select id="getUserApplyTotal" resultType="int">
+	select count(*) as total from CLNC_REG WHERE USERNAME = #{USERNAME}
+</select>
+
+<delete id="programApplydelete">
+	delete from CLNC_REG where EVNT_NO = #{EVNT_NO}
+</delete>
+</mapper>

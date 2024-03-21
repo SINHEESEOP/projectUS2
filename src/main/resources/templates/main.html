@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8" />
+<title>Document</title>
+
+<!-- 헤더 -->
+
+<style type="text/css">
+
+  /* 전체영역에서 여백을 없애줌 */
+  * {
+      margin: 0;
+      padding: 0;
+    }
+  /* ul li태그에 리스트 스타일을 없앰 */
+    ul li{
+      list-style: none;
+    }
+  /* a태그에 텍스트 밑줄을 없애고 색상을 #333 */
+    a {
+      text-decoration: none;
+      color:#333;
+      
+    }
+  /* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
+  menu박스 가운데정렬, 글자가운데 정렬 */
+
+  
+  #menu {
+    font:bold 20px "malgun gothic";
+    width:1400px;
+    height:150px;
+    color:black;
+    line-height: 50px; 
+    z-index: 10;
+    
+    padding-left: 220px;
+    box-sizing: border-box;
+    
+  }
+  #top-bar {width: 100%;  background: white;  border-bottom: 0px solid #000; box-shadow: 3px 2px 5px 0px;
+            display: flex;   position: fixed; top: 0; left: 0; right: 0; z-index: 100;}
+
+  
+  
+  /* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+    #menu > ul > li {
+      float:left;
+      width:15%;
+      position:relative;
+      padding-top: 50px ;
+      box-sizing: border-box;
+      
+    }
+
+    #menu > ul > li > ul {
+		display:none;
+		position: absolute;
+    top:100px;
+		font-size:14px;
+		background: rgba(192, 225, 252, 0.712);
+    width: 70%;
+    
+    
+    
+	}
+  #menu > ul > li:hover > ul {
+    display: block;
+    text-align: center;
+  
+	}
+
+  #menu > ul > li > ul > li:hover {
+		background: aqua;
+		transition: ease 1s;
+    height: 100%;
+    width: 100%;
+    
+		}
+
+   #ulflex > li {
+    display: flex;
+    justify-content: space-around;
+   }
+
+
+
+  #img {width: 100px; height: 100px;}
+
+  .top-logo {display: flex; align-items: center; width: 250px;}
+  .top-logo > a {margin-left: 10px; width: 100%;}
+  #login > button:hover { transform: scale(1.2);
+  transform-origin: center;
+  transition: transform 1s ease-in-out;
+}
+	#Topusername { margin-right: 300px; 
+				 margin-top: 60px;}
+	#Topusername  > p {font-weight: bold;}
+	
+	#Topusername  > p > span {color : blue;}
+	
+	#myPageBtn {margin-top : 20px;}
+	
+    </style>
+  
+</head>
+
+
+<header id="top-bar">
+
+  <div class="top-logo">
+    <a style="font:bold 20px malgun gothic; text-align: center;" >우리</a><img th:src="@{/img/free-icon-hospital-3252173.png}" id="img"> <a style="font:bold 20px malgun gothic; color: red; "> 보건실</a>
+  </div>
+
+  <div id="menu">
+	<ul id="ulflex">
+    
+		<li><a href="#" class="slideBtn1">보건실 소개</a>
+			<ul id="slide1">
+				<li><a href="#">이용안내</a></li>
+				<li><a href="#">찾아오는 길</a></li>
+			</ul>
+		</li>
+
+    <li><a href="#" class="slideBtn2">프로그램 신청</a>
+			<ul id="slide2">
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+
+    <li><a href="#" class="slideBtn3">의료기기 대여</a>
+			<ul id="slide3">
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+
+    <li><a href="#" class="slideBtn4">의약품 정보</a>
+			<ul id="slide4">
+				<li><a href="#">SUB_MENU</a></li>
+				<li><a href="#">SUB_MENU2</a></li>
+				<li><a href="#">SUB_MENU3</a></li>
+			</ul>
+		</li>
+	
+	<th:block sec:authorize="hasRole('ROLE_ADMIN')">
+    <li><a th:href="@{/admin/adminDscsnList}" class="slideBtn4">상담게시판</a>
+        <ul id="slide4">
+        </ul>
+    </li>
+	</th:block>
+
+		</ul>
+		
+	</div>
+	
+	
+	<th:block sec:authorize="!isAuthenticated()">
+		
+    <div id="login">
+      <button style="border: none; padding-top: 35px; cursor: pointer;" id="loginBtn"><img th:src="@{/img/free-icon-log-in-6749136.png}" style="width: 80px; margin-right : 100px"></button>
+    </div>
+    </th:block>
+    
+    <th:block sec:authorize="isAuthenticated()">
+    <div id="Topusername">
+    <p><span>[[${#authentication.principal.username }]]</span> 님 환영합니다</p>
+    <button>마이페이지</button>
+    <form action="logoutForm">
+    <button id="logoutBtn">로그아웃</button>
+    </form>
+    </div>
+
+    </th:block>
+    
+    
+    <script>
+    	
+ 	var loginBtn = document.getElementById("loginBtn");
+    
+    loginBtn.addEventListener('click',function(){
+    	
+    	
+    	location.href = "/LoginPageList";
+    	
+    }); 
+    
+    
+		var logoutBtn = document.getElementById("logoutBtn");
+	
+		logoutBtn.addEventListener('click', function(){
+		
+		event.preventDefault();
+		
+		document.logoutForm.action= "logoutForm"
+		document.logoutForm.submit();
+	});
+    
+		
+		
+    </script>
+    
+</header>
+
+
+
+<style>
+
+
+  /* 메인페이지*/
+
+  #mainbox {width: 1400px; height: 500px; margin: 0 auto; display: flex;}
+  #mainbox > div {width: 50%;}
+  #imgbox {display: flex; justify-content: space-around; align-items: center; margin-top: 200px;}
+  #mo  {width: 50px;}
+  #mo1 {width: 50px;}
+
+  #imgsilder {position: relative; padding-top: 10px; margin-top: 200px;}
+
+
+ 
+  swiper-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width:100%;
+      height: 100%;
+      object-fit: cover;
+    }
+</style>
+
+<body>
+
+
+
+
+
+<section>
+  <div id="mainbox">
+    <div id="imgbox">
+    <div style="position: absolute; left: 450px; top: 250px;"><img src="/img/mo.png" id="mo"></div>
+      <div style="position: absolute; left: 900px; top: 400px;"><img src="/img/mo1.png" id="mo1"></div>
+      <div> 
+        <p style="font-size: 2.222em;">보건실에서 대학구성원의 <br>
+       
+        <span style="font-weight: 700; color: #000;">건강을 책임</span>집니다.</p>
+      </div>
+    </div>
+    <div id="imgsilder">
+    <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true" css-mode="true" loop="true" autoplay="true" delay="2000">
+    <swiper-slide><a href="https://ncov.kdca.go.kr/"> <img th:src="@{/img/projectimg1.jpeg}"></a></swiper-slide>
+    <swiper-slide><a href="https://www.kdca.go.kr/">  <img th:src="@{/img/projectimg2.jpeg}"></a></swiper-slide>
+    <swiper-slide><a href="https://www.mohw.go.kr/">  <img th:src="@{/img/projectimg3.jpeg}"></a></swiper-slide>
+    <swiper-slide><a href="https://www.e-gen.or.kr/"> <img th:src="@{/img/projectimg4.jpeg}"></a></swiper-slide>
+    <swiper-slide><a href="https://www.moe.go.kr/">   <img th:src="@{/img/projectimg5.jpeg}"></a></swiper-slide>
+   
+  </swiper-container>
+
+    </div>
+  </div>
+
+<div style="height: 2000px;"></div>
+
+
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
+
+
+
+</body>

@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programList.css">
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+	
+	<div class="wrap">
+     <div class="reg-title">
+        <p>프로그램 조회</p>
+      </div>
+    <div class="middle">
+      <div class="total">
+        <p>총 게시글 수 : [[${pageVO.total}]]</p>
+      </div>
+    </div>
+      <table class="content-wrap">
+          <tr class="first">
+            <td>번호</td>
+            <td>프로그램 이름</td>
+            <td>신청시작일</td>
+            <td>신청마감일</td>
+            <td>작성일자</td>
+            <td>프로그램 장소</td>
+            <td>옵션</td>
+          </tr>
+        <th:block th:each="vo,status : ${list}">
+        <tr>
+          <td>[[${status.count}]]</td>
+          <td class="pname"><a th:href="@{programDetail(EVNT_NO = ${vo.EVNT_NO})}">[[${vo.EVNT_NM}]]</a></td>
+          <td th:text="${#strings.substring(vo.EVNT_APLY_BGNG_YMD,0,10)}"></td>
+           <td th:text="${#strings.substring(vo.EVNT_APLY_END_YMD,0,10)}"></td>
+          <td>[[${ #temporals.format(vo.EVNT_REG,'yyyy년MM월dd일')}]]</td>
+          <td>[[${vo.EVNT_PLC_NM}]]</td>
+          <td><button class="update" th:onclick="|location.href='@{programDetail(EVNT_NO=${vo.EVNT_NO})}'|">수정</button>
+              <button class="apply" th:onclick="|location.href='@{programDelete(EVNT_NO=${vo.EVNT_NO})}'|">삭제</button>
+          </td>
+        </tr>
+        </th:block>
+      </table>
+      <div class="reg-wrap">
+        <button type="button" onClick="location.href='programReg';">등록하기</button>
+      </div>
+      
+      <div class="page">
+      <ul>
+      <th:block th:if="${pageVO.prev}">
+      <li>
+      	<a th:href="@{programList(pageNum=${pageVO.startPage - 1}, amount=${pageVO.amount})}">prev</a>
+      </li>
+      </th:block>  
+      
+      <th:block th:each="page: ${pageVO.pageList}">
+      <li th:class="${pageVO.pageNum == page ? 'on' : ''}">
+      <a th:href="@{programList(pageNum=${page},amount=${pageVO.amount})}">[[${page}]]</a>
+      </li>
+      </th:block> 
+      
+      <th:block th:if="${pageVO.next}">
+      <li>
+      	<a th:href="@{programList(pageNum=${pageVO.endPage + 1},amount=${pageVO.amount})}">next</a>
+      </li>
+      </th:block>
+      </ul>
+      </div>
+  </div>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teamus.medic.admin.service.AdminMapper">
+
+	<select id="getDscsnList" resultType="adminVO">
+		select * from DSCSN_LIST 
+	</select>
+	
+	<select id="getDetail" resultType="adminVO">
+		
+		select * from DSCSN_LIST where DSCSN_SN = #{DSCSN_SN}
+	
+	</select>
+	
+	<delete id="delete">
+		
+		delete from DSCSN_LIST where DSCSN_SN = #{DSCSN_SN}
+		
+	</delete>
+	
+	
+	<update id="DescsnUpdate">
+	
+		update DSCSN_LIST set DSCSN_CN = #{DSCSN_CN},
+							DSCSN_TTL = #{DSCSN_TTL}
+							where DSCSN_SN = #{DSCSN_SN}
+							
+	
+	</update>
+	
+	<insert id="insertDescsn">
+    insert into DSCSN_LIST (DSCSN_SN,
+                         
+                            DSCSN_CN,
+                            DSCSN_TTL,
+                            username)
+    values(#{DSCSN_SN},
+         
+            #{DSCSN_CN},
+            #{DSCSN_TTL},
+            #{username})
+</insert>
+	
+
+</mapper>

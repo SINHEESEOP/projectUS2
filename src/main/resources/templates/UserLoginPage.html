@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    swiper-container {
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      position: relative;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .loginwindow{width: 500px; height:380px;background-color: white; position: absolute; top: 300px; z-index: 5; left: 820px; border-radius: 10px;}
+    #loginBox{padding-left: 30px; padding-top: 10px; padding-right: 30px;}
+    #loginBox > h3 {color: orangered; font-size: 30px; font-weight: bold;}
+    .input_info{height: 200px; display: flex; flex-direction: column; justify-content: center;}
+    .input_info > input {height: 40px;}
+    .input_info > input[type="submit"]{font-weight: bold; font-size: 20px; border: none;}
+  </style>
+</head>
+
+<body>
+
+  <swiper-container class="mySwiper" pagination="true" pagination-clickable="true"  space-between="30"
+    centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
+    <swiper-slide><img src="/img/514882_316987_5930.jpg"></swiper-slide>
+    <swiper-slide><img src="/img/212300_64291_3847.jpg"></swiper-slide>
+    <swiper-slide><img src="/img/1672021657.jpg"></swiper-slide>
+ 
+  </swiper-container>  
+  <section class="loginwindow" >
+    <div id="loginBox">
+     <h3>학생 로그인</h3>
+     
+     <form action="loginForm" method="post">
+      <div class="input_info">
+      <input type="hidden" name="url" value="UserLoginPage" />
+      <input type="text" name="username" placeholder="아이디를 입력하세요"><br>
+      <input type="password" name="password" placeholder="비밀번호를 입력하세요"><br>
+      <input type="submit" value="Login" style="background-color: orange; color: white; border-radius: 5px;">
+    </div>
+      <input type="checkbox" name="remember-me" >로그인 유지하기<br>
+    </form>
+    [[${mgs}]]
+    
+  </div>
+
+
+  </section>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+</body>
+
+</html>
