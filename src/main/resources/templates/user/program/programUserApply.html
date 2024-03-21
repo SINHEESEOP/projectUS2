@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <link rel="stylesheet" href="/css/programList.css">
+
 	
 <th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
 
@@ -11,17 +12,7 @@
       </div>
     <div class="middle">
       <div class="total">
-        <p>총 신청횟수 : 200</p>
-      </div>
-      <div class="search">
-        <form action="">
-        <select name="" id="">
-          <option value="">제목</option>
-          <option value="">내용</option>
-        </select>
-        <input type="text">
-       <button type="button">검색</button>
-      </form>
+      <p>프로그램 총 신청횟수 : [[${pageVO.total}]]</p>
       </div>
     </div>
       <table class="content-wrap">
@@ -37,23 +28,46 @@
         <th:block th:each="vo,status : ${list}">
         <tr>
           <td>[[${status.count}]]</td>
-          <td>[[${vo.EVNT_NM}]]</td>
+          <td class="pname"><a th:href="@{programUserDetail(EVNT_NO = ${vo.EVNT_NO})}">[[${vo.EVNT_NM}]]</a></td>
           <td th:text="${#strings.substring(vo.EVNT_REG_YMD,0,10)}"></td>
-          <td>[[${vo.EVNT_REG_YN}]]</td>
-          <td>[[${vo.EVNT_END_YN}]]</td>
+          <td th:if="${vo.EVNT_REG_YN} == 'Y'">
+          	<button class="update">수락</button>
+          </td>
+          <td th:if="${vo.EVNT_REG_YN} == 'N'">
+          	<button class="apply">수락대기</button>
+          </td>
+         <td th:if="${vo.EVNT_END_YN} == 'Y'">
+          	<button class="update">수료</button>
+          </td>
+          <td th:if="${vo.EVNT_END_YN} == 'N'">
+          	<button class="apply">미수료</button>
+          </td>
           <td>[[${vo.EVNT_PLC_NM}]]</td>
-          <td><button type="button"  th:onclick="|location.href='@{deleteApply(EVNT_REG_NO=${vo.EVNT_REG_NO})}'|" class="applyBtn">신청취소</button></td>
+          <td><button type="button"  th:onclick="|location.href='@{deleteApply(EVNT_REG_NO=${vo.EVNT_REG_NO},USERNAME=${vo.USERNAME})}'|" class="apply">신청취소</button></td>
         </tr>
         </th:block>
       </table>
-      <div class="page-wrap">
-        <span><a href="#">◁</a></span>
-        <span><a href="#">1</a></span>
-        <span><a href="#">1</a></span>
-        <span><a href="#">1</a></span>
-        <span><a href="#">1</a></span>
-        <span><a href="#">▷</a></span>
-        </div>
-
+       <div class="page">
+      <ul>
+      <th:block th:if="${pageVO.prev}">
+      <li>
+      	<a th:href="@{programUserApply(USERNAME='2016108101',pageNum=${pageVO.startPage - 1}, amount=${pageVO.amount})}">prev</a>
+      </li>
+      </th:block>  
+      
+      <th:block th:each="page: ${pageVO.pageList}">
+      <li th:class="${pageVO.pageNum == page ? 'on' : ''}">
+      <a th:href="@{programUserApply(USERNAME='2016108101',pageNum=${page},amount=${pageVO.amount})}">[[${page}]]</a>
+      </li>
+      </th:block> 
+      
+      <th:block th:if="${pageVO.next}">
+      <li>
+      	<a th:href="@{programUserApply(USERNAME='2016108101',pageNum=${pageVO.endPage + 1},amount=${pageVO.amount})}">next</a>
+      </li>
+      </th:block>
+      </ul>
+      </div>
+      
   </div>
 </html>
