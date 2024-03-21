@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.teamus.medic.command.ProgramRegVO;
 import com.teamus.medic.command.ProgramVO;
 import com.teamus.medic.command.UserVO;
-import com.teamus.medic.util.Criteria;
 
 @Service("programService")
 public class ProgramServiceImpl implements ProgramService {
@@ -23,9 +22,9 @@ public class ProgramServiceImpl implements ProgramService {
 	}
 
 	@Override
-	public List<ProgramVO> getProgramList(Criteria cri) {
+	public List<ProgramVO> getProgramList() {
 		
-		return programMapper.getProgramList(cri);
+		return programMapper.getProgramList();
 	}
 
 	@Override
@@ -49,24 +48,24 @@ public class ProgramServiceImpl implements ProgramService {
 	}
 
 	@Override
-	public List<ProgramRegVO> getProgramRegList(String USERNAME , Criteria cri) {
+	public List<ProgramRegVO> getProgramRegList() {
 		
-		return programMapper.getProgramRegList(USERNAME , cri);
+		return programMapper.getProgramRegList();
 		
 		
 	}
 
 	@Override
-	public UserVO getUser(String USERNAME) {
+	public UserVO getUser(String USER_NO) {
 		
 		
-		return programMapper.getUser(USERNAME);
+		return programMapper.getUser(USER_NO);
 	}
 
 	@Override
-	public void programUserRegist(String USERNAME, int EVNT_NO) {
+	public void programUserRegist(String USER_NO, int EVNT_NO) {
 		
-	programMapper.programUserRegist(USERNAME, EVNT_NO);
+	programMapper.programUserRegist(USER_NO, EVNT_NO);
 		
 	}
 
@@ -78,9 +77,9 @@ public class ProgramServiceImpl implements ProgramService {
 	}
 
 	@Override
-	public List<ProgramRegVO> getProgramApplyList(Criteria cri) {
+	public List<ProgramRegVO> getProgramApplyList() {
 	
-		return programMapper.getProgramApplyList(cri);
+		return programMapper.getProgramApplyList();
 	}
 
 	@Override
@@ -91,34 +90,10 @@ public class ProgramServiceImpl implements ProgramService {
 	}
 
 	@Override
-	public void successUpdate(int EVNT_REG_NO) {
+	public void successUpdate(int ENVT_NO) {
 		
-		programMapper.successUpdate(EVNT_REG_NO);
+		programMapper.successUpdate(ENVT_NO);
 		
-	}
-
-	@Override
-	public int getProgramTotal() {
-		
-		return programMapper.getProgramTotal();
-	}
-
-	@Override
-	public int getProgramApplyTotal(Criteria cri) {
-		
-		return programMapper.getProgramApplyTotal(cri);
-	}
-
-	@Override
-	public int getUserApplyTotal(String USERNAME) {
-		
-		return programMapper.getUserApplyTotal(USERNAME);
-	}
-
-	@Override
-	public int programApplydelete(int EVNT_NO) {
-		
-		return programMapper.programApplydelete(EVNT_NO);
 	}
 
 }

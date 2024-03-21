@@ -7,9 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
   <script th:src="@{/js/jquery.min.js}"></script>
   <link rel="stylesheet" th:href="@{/css/baseLayout.css}">
   <script defer th:src="@{/js/baseLayout.js}"></script>
@@ -18,22 +15,17 @@
 </head>
 <body>
   <div class="header">
-    <div>
-    <span class="title" th:onclick="|location.href='@{/admin/program/main}'|">우리 보건실</span>
-    <span class="title2">us medic</span>
-    </div>
+    <div><span class="title">우리 보건실</span></div>
     <div><button type="button" class="headerBtn">로그아웃</button></div>
   </div>
-  <div class="section">	
+  <div class="section">
   <div class="sidenav">
     <div class="menu1-wrap">
       <div class="menu"><span>프로그램</span></div>
       <div class="menu1-content">
-        <div class="menu1 reg"><span><a href="/admin/program/programReg" class="d">프로그램 등록</a></span></div>
-        <div class="menu1 list"><span><a href="/admin/program/programList">프로그램 내역</a></span></div>
-        <div class="menu1 aply"><span><a href="/admin/program/programApply">프로그램 신청내역</a></span></div>
-        <div class="menu1 reg"><span><a href="/user/program/programUserList">(유저)프로그램 내역</a></span></div>
-        <div class="menu1 aply"><span><a href="/user/program/programUserApply?USERNAME=2016108101">(유저)프로그램 신청내역</a></span></div>   
+        <div class="menu1 reg"><span><a th:href="@{programReg}">프로그램 등록</a></span></div>
+        <div class="menu1 list"><span><a th:href="@{programList}">프로그램 내역</a></span></div>
+        <div class="menu1 aply"><span><a th:href="@{programApply}">프로그램 신청내역</a></span></div>  
       </div>
     </div>
     <div class="menu2-wrap">
@@ -61,16 +53,31 @@
     <th:block th:replace=${content}>
     </th:block>
   </div>
-<div class="footer">
-	<div>
-	<p>Copyright © 2024 by US - All rights reserved.</p>
-	<p>우리 보건실</p>
-	<p>(강남인재KDT 실습실)프로젝트-위지언(4조)</p>
-	<p>강태혁,신주형,박지원,고현진,신희섭<p>
-	</div>
-</div>
 </body>
 	</th:block>
+	
+	
+	<script>
+  
+  
+  $(".menu").on("click",(function(){
+    
+    $(this).toggleClass("active");
 
 
+    $(".menu").each(function(){
+
+
+      if($(this).hasClass("active")){
+        $(this).next().css('display','block');
+        $(this).css('backgroundColor','#344765');
+        $(this).css('backgroundColor','#344765');
+      }else{
+        $(this).next().css('display','none');
+        $(this).css('backgroundColor','#1b2536');
+        $(this).parent().css('backgroundColor','#1b2536');
+      }
+    })
+  }));
+</script>
 </html>

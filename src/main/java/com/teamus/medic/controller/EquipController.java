@@ -39,17 +39,10 @@ public class EquipController {
 	private EquipService equipService;
 	
 	
-	@GetMapping("/toEquipHome")
-	public String toEquipHome() {
-		
-		
-		return "equip/equipHome";
-	}
 	
 	
-	
-	@GetMapping("/toRentReg")
-	public String toRentReg(Model model) {
+	@GetMapping("/equipRentReg")
+	public String equipRentReg(Model model) {
 		int count=equipService.getCount();
 		List<EquipVO>list = new ArrayList<>();
 		for(int i =1;i<=count;i++) {
@@ -62,8 +55,8 @@ public class EquipController {
 		return "equip/equipRentReg";
 	}
 	
-	@GetMapping("/toEquipList")
-	public String toEquipList(Model model) {
+	@GetMapping("/viewEquipList")
+	public String viewEquipList(Model model) {
 		int count=equipService.getCount();
 		List<EquipVO>list = new ArrayList<>();
 		for(int i =1;i<=count;i++) {
@@ -76,57 +69,22 @@ public class EquipController {
 		return "equip/equipList";
 	}
 	
-	@GetMapping("/toEquipReturn")
-	public String toEquipReturn(@RequestParam("user")String userNo,Model model) {
-		
-		
-		RentVO vo=equipService.getRntlList(userNo);
-		if(vo!=null) {
-			model.addAttribute("vo",vo);			
-			return "/equip/equipReturn";	
-		}else {
-			return "equip/equipClose";
-		}
-		
-		
-		
-	}
-	
-	@GetMapping("/returnForm")
-	public String returnForm(@RequestParam("rntlQty")int rntlQty,@RequestParam("rntlNo")int rntlNo,@RequestParam("istrCode")String code) {
-	
-		EquipVO vo1=equipService.getDetail(code);
-		int istrqty=vo1.getISTR_QTY();
-		vo1.setISTR_QTY(istrqty+rntlQty);
-		equipService.updateIstr2(vo1);
-		equipService.deleteRntl(rntlNo);
-		
-		return "equip/equipSucc";
-	}
 	
 	@PostMapping("/rentRegForm")
 	public String rentRegForm(RentVO vo) {
-		String user=vo.getUSER_NO();
-		int count=equipService.getRntlCount(user);
-		if(count!=0) {
-			return "equip/equipClose";
-		}else {
-			String rntName=vo.getISTR_NM();
-			
-			EquipVO vo2=equipService.getIstr(rntName);
-			
-			if(vo2.getISTR_QTY()<vo.getRNTL_QTY()) {
-				return "equip/equipClose";
-			}else {
-				vo2.setISTR_QTY(vo2.getISTR_QTY()-vo.getRNTL_QTY());
-				equipService.updateIstr(vo2);
-				vo.setISTR_CODE(vo2.getISTR_CODE());
-				equipService.rentReg(vo);
-				return "equip/equipSucc";
-			}
-			
-		}
-			
+		
+		//RNTL_NM을 기반으로 ISTR_NM과 같은물품의 VO를 조회
+		//ISTR_QTY-RNTLQTY <0
+		
+		
+		System.out.println(vo.getRNTL_QTY());
+		String structure=vo.getISTR_NM();
+		String istrCode=equipService.getCode(structure);
+		vo.setISTR_NM(istrCode);
+		
+		
+		
+		return "equip/ss";
 	}
 	
 //	@PostMapping(value = "/viewDetail")
@@ -143,11 +101,11 @@ public class EquipController {
 //		
 //	}
 	
-	@GetMapping("/detailPopup")
+	@GetMapping("/popup")
 	public String popup(Model model,@RequestParam("code")String code) {
-		
+		System.out.println(code);
 		EquipVO vo=equipService.getDetail(code);
-		
+		System.out.println(vo.toString());
 		model.addAttribute("vo",vo);
 		return "equip/equipDetail";
 	}

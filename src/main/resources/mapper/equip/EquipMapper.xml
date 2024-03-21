@@ -12,46 +12,17 @@
 	<select id="getCode" resultType="String">
 		SELECT ISTR_CODE FROM MEDVC_INFO WHERE ISTR_NM=#{structure}
 	</select>
-	<insert id="insertIstr">
-		INSERT INTO MEDVC_INFO(ISTR_NM,ISTR_CODE,ISTR_QTY)
-		values(
-			#{ISTR_NM},
-			#{ISTR_CODE},
-			#{ISTR_QTY}
-		)
-	</insert>
 	<insert id="rentReg">
-		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY)
+		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY,RNTL_YMD)
 		values(
 			#{USER_NO},
 			#{ISTR_CODE},
-			#{RNTL_QTY}
+			#{RNTL_QTY},
+			#{RNTL_YMD}
 		
 		)
 	</insert>
-	<select id="getIstr" resultType="com.teamus.medic.command.EquipVO">
-		select * FROM MEDVC_INFO where ISTR_NM= #{rntName}
-	</select>
-	<update id="updateIstr">
-		update MEDVC_INFO
-		set ISTR_QTY=#{ISTR_QTY}
-		where ISTR_NM=#{ISTR_NM}
-	</update>
-	<update id="updateIstr2">
-		update MEDVC_INFO
-		set ISTR_QTY=#{ISTR_QTY}
-		where ISTR_CODE=#{ISTR_CODE}
-	</update>
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
 		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
 	</select>
-	<select id="getRntlCount" resultType="Integer">
-		SELECT count(*) from MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}
-	</select>
-	<select id="getRntlList" resultType="com.teamus.medic.command.RentVO">
-		SELECT * FROM MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}	
-	</select>
-	<delete id="deleteRntl">
-		Delete FROM MEDVC_RENT_MGMT WHERE RNTL_NO=#{rntlNo}
-	</delete>
 </mapper>  

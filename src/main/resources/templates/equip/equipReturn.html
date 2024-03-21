@@ -1,56 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/css/programList.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>의료기기 반납</title>
-<style type="text/css">
-	body {
-  		font-family: 'Open Sans', sans-serif;
-  		font-weight: 300;
-  		line-height: 1.42em;
-  		color:yellow;
-  		background-color:#1F2739;
-	}
-
-</style>
+<title>Insert title here</title>
 </head>
 <body>
-	<script>
-		sessionStorage.setItem("currentUser","ST122341");
-		var cuser =sessionStorage.getItem("currentuser")
-		window.resizeTo(1420, 780);
-	</script>
-	<section class="wrap">
-		<h3 class="reg-title">당신의 대여목록</h3>
-		<table>
-			<tr>
-				<td>대여번호</td>
-				<td>대여물품코드</td>
-				<td>대여수량</td>
-				<td>대여일</td>
-				<td>비고</td>
-			</tr>
-			<tr>
-				<td class="rno">[[${vo.RNTL_NO}]]</td>
-				<td class="rcode">[[${vo.ISTR_CODE}]]</td>
-				<td class="rqty">[[${vo.RNTL_QTY}]]</td>
-				<td>[[${vo.ISTR_YMD}]]</td>
-				<td><button type="button" class="returnBtn">반납</button></td>
-			</tr>
-		</table>
-	
-	</section>
-	<script th:inline="javascript">
-		var rno=$(".rno").text();
-		var rqty=$(".rqty").text();
-		var rcode=$(".rcode").text();
-		$(".returnBtn").click(function(){
-			
-			location.href="/equip/returnForm?rntlQty="+rqty+"&rntlNo="+rno+"&istrCode="+rcode;
-			window.close();
-		});
-	</script>
+	<h3>의료기기 반납 페이지</h3>
 </body>
 </html>

@@ -10,10 +10,7 @@
 </insert> 
 
  <select id="getProgramList" resultType="ProgramVO">
- select * 
- from CLNC_LIST 
- ORDER BY EVNT_NO DESC
- limit #{pageStart}, #{amount}
+ select * from CLNC_LIST ORDER BY EVNT_NO DESC;
 </select>
  <select id="getDetail" resultType="programVO">
  select * from CLNC_LIST WHERE EVNT_NO = #{EVNT_NO}
@@ -30,19 +27,15 @@
 </delete>
 
 <select id="getProgramRegList" resultType="ProgramRegVO">
-	SELECT * FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
-	LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
-	WHERE U.USERNAME = #{USERNAME}
-	limit #{cri.pageStart}, #{cri.amount};
-
+	select * from CLNC_REG R LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO ORDER BY EVNT_REG_NO DESC;
 </select>
 
 <select id="getUser" resultType="UserVO">
-select * from USER where USERNAME = #{USERNAME};
+select * from USER where USER_NO = #{USER_NO};
 </select>
 
 <insert id="programUserRegist">
-	insert into CLNC_REG(EVNT_NO,USERNAME)VALUES(#{EVNT_NO} , #{USERNAME})
+	insert into CLNC_REG(EVNT_NO,USER_NO)VALUES(#{EVNT_NO} , #{USER_NO})
 </insert>
 
 <delete id="deleteApply">
@@ -50,31 +43,8 @@ select * from USER where USERNAME = #{USERNAME};
 </delete>
 
 <select id="getProgramApplyList" resultType="programRegVO">
-	SELECT * FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
+	SELECT * FROM CLNC_REG R LEFT JOIN USER U ON R.USER_NO = U.USER_NO
 	LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
-	<if test='searchContent eq "program"'>
-		where EVNT_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "name"'>
-		where USER_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "department"'>
-		where SCSBJT_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "applyY"'>
-		where EVNT_REG_YN = 'Y'
-	</if>
-	<if test='searchContent eq "applyN" '>
-		where EVNT_REG_YN = 'N'
-	</if>
-	<if test='searchContent eq "successY"'>
-		where EVNT_END_YN = 'Y'
-	</if>
-	<if test='searchContent eq "successN" '>
-		where EVNT_END_YN = 'N'
-	</if>
-	ORDER BY EVNT_REG_NO DESC
-	limit #{pageStart} , #{amount}
 </select>
 
 <update id="applyUpdate">
@@ -82,45 +52,6 @@ select * from USER where USERNAME = #{USERNAME};
 </update>
 
 <update id="successUpdate">
-	update CLNC_REG set EVNT_END_YN = 'Y' where EVNT_REG_NO = #{EVNT_REG_NO}
+	update CLNC_REG set EVNT_END_YN = 'Y' where EVNT_NO = #{EVNT_NO}
 </update>
-
-<select id="getProgramTotal" resultType="int">
-select count(*) as total 
-from CLNC_LIST
-</select>
-
-<select id="getProgramApplyTotal" resultType="int">
-SELECT count(*) FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
-LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO	
-	<if test='searchContent eq "program"'>
-		where EVNT_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "name"'>
-		where USER_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "department"'>
-		where SCSBJT_NM like concat('%',#{searchValue},'%')
-	</if>
-	<if test='searchContent eq "Y"'>
-		where EVNT_REG_YN = 'Y'
-	</if>
-	<if test='searchContent eq "N"'>
-		where EVNT_REG_YN = 'N'
-	</if>
-	<if test='searchContent eq "successY"'>
-		where EVNT_END_YN = 'Y'
-	</if>
-	<if test='searchContent eq "successN" '>
-		where EVNT_END_YN = 'N'
-	</if>
-</select>
-
-<select id="getUserApplyTotal" resultType="int">
-	select count(*) as total from CLNC_REG WHERE USERNAME = #{USERNAME}
-</select>
-
-<delete id="programApplydelete">
-	delete from CLNC_REG where EVNT_NO = #{EVNT_NO}
-</delete>
 </mapper>

@@ -20,7 +20,7 @@ public class ProgramRegVO {
 	private Integer EVNT_NO;
 	private String EVNT_NM;
 	private String EVNT_PLC_NM;
-	private String USERNAME;
+	private String USER_NO;
 	private String USER_NM;
 	private String USER_TELNO;
 	private String SCSBJT_NM;

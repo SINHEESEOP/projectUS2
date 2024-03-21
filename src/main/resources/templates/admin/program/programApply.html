@@ -11,30 +11,21 @@
       </div>
     <div class="middle">
       <div class="total">
-        <p>총 게시글 수 : [[${pageVO.total}]]</p>
+        <p>총 게시글 수 : 200</p>
       </div>
       <div class="search">
-        <form name="programApply" action="programApply" method="get">
-        <input type="hidden" name="pageNum" value='1'>
-        <input type="hidden" name="amount" th:value="${pageVO.amount}">
-        
-        <select name="searchContent">
-          <option value='program'  th:selected="${pageVO.cri.searchContent == 'program'}">신청프로그램</option>
-          <option value='name'  th:selected="${pageVO.cri.searchContent == 'name'}">이름</option>
-          <option value='department' th:selected="${pageVO.cri.searchContent == 'department'}">학과</option>
-          <option value='applyY' th:selected="${pageVO.cri.searchContent == 'applyY'}">수락완료</option>
-          <option value='applyN' th:selected="${pageVO.cri.searchContent == 'applyN'}">수락대기</option>
-          <option value='successY' th:selected="${pageVO.cri.searchContent == 'successY'}">수료완료</option>
-          <option value='successN' th:selected="${pageVO.cri.searchContent == 'successN'}">수료대기</option>
+        <form action="">
+        <select name="" id="">
+          <option value="">제목</option>
+          <option value="">내용</option>
         </select>
-        <input type="text" name="searchValue">
-       <button type="button" id="searchBtn">검색</button>
+        <input type="text">
+       <button type="button">검색</button>
       </form>
       </div>
     </div>
       <table class="content-wrap">
           <tr class="first">
-            <td>번호</td>
             <td>학번</td>
             <td>이름</td>
             <td>전화번호</td>
@@ -42,55 +33,26 @@
             <td>학과</td>
             <td>신청프로그램</td>
             <td>수락여부</td>
-            <td>수료</td>
           </tr>
           <th:block th:each="vo,status : ${list}">
         <tr>
-        	<td>[[${status.count}]]</td>
-        	<td>[[${vo.USERNAME}]]</td>
+        	<td>[[${vo.USER_NO}]]</td>
         	<td>[[${vo.USER_NM}]]</td>
         	<td>[[${vo.USER_TELNO}]]</td>
         	<td>[[${vo.USER_EML_ADDR}]]</td>
         	<td>[[${vo.SCSBJT_NM}]]</td>
         	<td>[[${vo.EVNT_NM}]]</td>
-           <td th:if="${vo.EVNT_REG_YN} == Y"><button id="btn" class="update">수락완료</button></td>
-           <td th:if="${vo.EVNT_REG_YN} == N"><button class="apply" th:onclick="|location.href='@{applyUpdate(EVNT_REG_NO=${vo.EVNT_REG_NO})}'|">수락하기</button></td>
-           <td th:if="${vo.EVNT_END_YN} == Y"><button id="btn" class="update">수료완료</button></td>
-           <td th:if="${vo.EVNT_END_YN} == N"><button class="apply" th:onclick="|location.href='@{successUpdate(EVNT_REG_NO=${vo.EVNT_REG_NO})}'|">수료</button></td>
-           <th:block>
+           <td><button id="btn" class="update" th:onclick="|location.href='@{applyUpdate(EVNT_REG_NO=${vo.EVNT_REG_NO})}'|">수락</button>
+          </td>
+          </th:block>
       </table>
-      <div class="page">
-      <ul>
-      <th:block th:if="${pageVO.prev}">
-      <li>
-      	<a th:href="@{programApply(pageNum=${pageVO.startPage - 1},amount=${pageVO.amount},searchContent=${pageVO.cri.searchContent},searchValue=${pageVO.cri.searchValue})}">prev</a>
-      </li>
-      </th:block>  	
-      
-      <th:block th:each="page: ${pageVO.pageList}">
-      <li th:class="${pageVO.pageNum == page ? 'on' : ''}">
-      <a th:href="@{programApply(pageNum=${page},amount=${pageVO.amount},searchContent=${pageVO.cri.searchContent},searchValue=${pageVO.cri.searchValue})}">[[${page}]]</a>
-      </li>
-      </th:block> 
-      
-      <th:block th:if="${pageVO.next}">
-      <li>
-      	<a th:href="@{programApply(pageNum=${pageVO.endPage + 1},amount=${pageVO.amount},searchContent=${pageVO.cri.searchContent},searchValue=${pageVO.cri.searchValue})}">next</a>
-      </li>
-      </th:block>
-      </ul>
-      </div>
+      <div class="page-wrap">
+        <span><a href="#">◁</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">1</a></span>
+        <span><a href="#">▷</a></span>
+       </div>
   </div>
-  
 </html>		
-
-  <script>
-  var searchBtn = document.getElementById("searchBtn");
-  
-  searchBtn.onclick = function() {
-	  
-	  event.preventDefault(); 
-	  document.programApply.submit();
-  }
-  
-  </script>
