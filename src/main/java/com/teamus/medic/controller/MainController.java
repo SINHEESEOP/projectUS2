@@ -100,7 +100,7 @@ public class MainController {
 	 @GetMapping("/deny")
 	 public @ResponseBody String deny() {
 		 
-		 return "권한이 없는 페이지입니다.";
+		 return "권한이 없는 페이지입니다";
 	 }
 	
 }
