@@ -59,15 +59,15 @@ public class EquipServiceImpl implements EquipService{
 	}
 
 	@Override
-	public RentVO getRntlList(String userNo) {
+	public RentVO getRntlList(String USERNAME) {
 		
-		return equipMapper.getRntlList(userNo);
+		return equipMapper.getRntlList(USERNAME);
 	}
 
 	@Override
-	public int getRntlCount(String userNo) {
+	public int getRntlCount(String USERNAME) {
 		
-		return equipMapper.getRntlCount(userNo);
+		return equipMapper.getRntlCount(USERNAME);
 	}
 
 	@Override

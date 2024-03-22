@@ -40,7 +40,7 @@
 </head>
 <body>
 	<script>
-		window.resizeTo(1470,880);
+		
 	</script>
 	
 
@@ -50,6 +50,7 @@
 		<div class="reg-title">
 			<th:block sec:authorize="isAuthenticated()">
 			<h3 class="middle-name">[[${#authentication.principal.username}]]님 안녕하세요</h3>
+			<h6 hidden="hidden" class="authorized">[[${#authentication.principal.username}]]</h6>
 			</th:block>
 		</div>
 		</div>
@@ -66,11 +67,12 @@
 		</div>
 	</div>
 	<script>
+		var currentUser=$(".authorized").text();
+		console.log(currentUser);
+		localStorage.setItem("currentUser",currentUser);
 		
-	
-	$("#homeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
+		$("#homeBtn").click(function(){
+			
 			location.href="/admin/program/main";
 			
 		}); 
@@ -101,8 +103,8 @@
 		});
 		
 		$("#closeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
+			console.log(1);
+			
 		});
 		
 		

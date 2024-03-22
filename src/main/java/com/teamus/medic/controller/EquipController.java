@@ -77,10 +77,10 @@ public class EquipController {
 	}
 	
 	@GetMapping("/toEquipReturn")
-	public String toEquipReturn(@RequestParam("user")String userNo,Model model) {
+	public String toEquipReturn(@RequestParam("user")String USERNAME,Model model) {
 		
 		
-		RentVO vo=equipService.getRntlList(userNo);
+		RentVO vo=equipService.getRntlList(USERNAME);
 		if(vo!=null) {
 			model.addAttribute("vo",vo);			
 			return "/equip/equipReturn";	
@@ -106,7 +106,7 @@ public class EquipController {
 	
 	@PostMapping("/rentRegForm")
 	public String rentRegForm(RentVO vo) {
-		String user=vo.getUSER_NO();
+		String user=vo.getUSERNAME();
 		int count=equipService.getRntlCount(user);
 		if(count!=0) {
 			return "equip/equipClose";

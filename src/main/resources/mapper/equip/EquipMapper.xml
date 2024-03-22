@@ -4,16 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teamus.medic.equip.service.EquipMapper">
 	<select id="getCount" resultType="Integer">
-		SELECT count(*) FROM MEDVC_INFO
+		SELECT count(*) FROM medvc_info_mgmt
 	</select>
 	<select id="getData" resultType="com.teamus.medic.command.EquipVO">
-		SELECT * FROM MEDVC_INFO where ISTR_NO = #{i}
+		SELECT * FROM medvc_info_mgmt where ISTR_NO = #{i}
 	</select>
 	<select id="getCode" resultType="String">
-		SELECT ISTR_CODE FROM MEDVC_INFO WHERE ISTR_NM=#{structure}
+		SELECT ISTR_CODE FROM medvc_info_mgmt WHERE ISTR_NM=#{structure}
 	</select>
 	<insert id="insertIstr">
-		INSERT INTO MEDVC_INFO(ISTR_NM,ISTR_CODE,ISTR_QTY)
+		INSERT INTO medvc_info_mgmt(ISTR_NM,ISTR_CODE,ISTR_QTY)
 		values(
 			#{ISTR_NM},
 			#{ISTR_CODE},
@@ -21,35 +21,35 @@
 		)
 	</insert>
 	<insert id="rentReg">
-		INSERT INTO MEDVC_RENT_MGMT(USER_NO,ISTR_CODE,RNTL_QTY)
+		INSERT INTO MEDVC_RENT_MGMT(USERNAME,ISTR_CODE,RNTL_QTY)
 		values(
-			#{USER_NO},
+			#{USERNAME},
 			#{ISTR_CODE},
 			#{RNTL_QTY}
 		
 		)
 	</insert>
 	<select id="getIstr" resultType="com.teamus.medic.command.EquipVO">
-		select * FROM MEDVC_INFO where ISTR_NM= #{rntName}
+		select * FROM medvc_info_mgmt where ISTR_NM= #{rntName}
 	</select>
 	<update id="updateIstr">
-		update MEDVC_INFO
+		update medvc_info_mgmt
 		set ISTR_QTY=#{ISTR_QTY}
 		where ISTR_NM=#{ISTR_NM}
 	</update>
 	<update id="updateIstr2">
-		update MEDVC_INFO
+		update medvc_info_mgmt
 		set ISTR_QTY=#{ISTR_QTY}
 		where ISTR_CODE=#{ISTR_CODE}
 	</update>
 	<select id="getDetail" resultType="com.teamus.medic.command.EquipVO">
-		SELECT * FROM MEDVC_INFO WHERE ISTR_CODE= #{code}
+		SELECT * FROM medvc_info_mgmt WHERE ISTR_CODE= #{code}
 	</select>
 	<select id="getRntlCount" resultType="Integer">
-		SELECT count(*) from MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}
+		SELECT count(*) from MEDVC_RENT_MGMT WHERE USERNAME=#{USERNAME}
 	</select>
 	<select id="getRntlList" resultType="com.teamus.medic.command.RentVO">
-		SELECT * FROM MEDVC_RENT_MGMT WHERE USER_NO=#{userNo}	
+		SELECT * FROM MEDVC_RENT_MGMT WHERE USERNAME=#{USERNAME}	
 	</select>
 	<delete id="deleteRntl">
 		Delete FROM MEDVC_RENT_MGMT WHERE RNTL_NO=#{rntlNo}

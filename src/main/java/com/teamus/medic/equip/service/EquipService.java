@@ -19,9 +19,9 @@ public interface EquipService {
 
 	public void rentReg(RentVO vo);
 
-	public RentVO getRntlList(String userNo);
+	public RentVO getRntlList(String USERNAME);
 
-	public int getRntlCount(String userNo);
+	public int getRntlCount(String USERNAME);
 
 	public void updateIstr2(EquipVO vo1);
 
