@@ -85,8 +85,10 @@ public class ProgramUserController {
 		
 		String USERNAME = principal.getName();
 		
-		programService.programUserRegist(USERNAME,EVNT_NO);
 		
+			
+		programService.programUserRegist(USERNAME,EVNT_NO);
+			
 		return "redirect:/user/program/programUserApply";
 	}
 	

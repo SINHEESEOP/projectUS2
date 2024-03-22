@@ -70,10 +70,13 @@ public class ProgramAdminController {
 	public String programApply(Model model, Criteria cri) {
 		
 		List<ProgramRegVO> list = programService.getProgramApplyList(cri);
+		
 		int total = programService.getProgramApplyTotal(cri);
+		
 		PageVO pageVO = new PageVO(cri , total);
 		
 		model.addAttribute("list",list);
+		
 		model.addAttribute("pageVO",pageVO);
 		
 		return "admin/program/programApply";

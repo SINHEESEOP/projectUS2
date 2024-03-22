@@ -4,7 +4,11 @@
 
 <th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
 	
+
+
+
 	<div class="wrap">
+	<form name="insertForm" method="post">
       <div class="reg-title">
         <p>상담등록하기</p>
       </div>
@@ -24,8 +28,9 @@
         <button type="button" class="reg" id="insertBtn">등록</button>
         <button type="button" class="list" id="listBtn">목록</button>
       </div>
+	</form>
     </div>
-    </form>
+	
   
   
   
@@ -49,7 +54,6 @@
     
     
     
-    
     <script>
     
     $(document).ready(function(){
@@ -61,11 +65,15 @@
     
 	var insertBtn = document.getElementById("insertBtn");
 	
-	insertBtn.addEventListener('click', function(){
+		insertBtn.addEventListener('click', function(){
 		
 		event.preventDefault();
 		
+		console.log(document.forms[1]);
+		
+		
 		document.insertForm.action= "insertForm";
+		
 		document.insertForm.submit();
 	});
    
