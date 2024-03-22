@@ -1,5 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"  
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <link rel="stylesheet" href="/css/programReg.css">
 <link rel="stylesheet" th:href="@{/css/adminMain.css}">
 
@@ -11,7 +11,9 @@
 		<div class="welcome">
 			<p>중앙 포털 우리 보건실에</p>
 			<p class="middle-hi">오신 것을 환영합니다</p>
-			<p class="middle-name">관리자님 안녕하세요<p>
+			<th:block sec:authorize="isAuthenticated()">
+			<p class="middle-name">[[${#authentication.principal.username}]]님 안녕하세요<p>
+			</th:block>
 		</div>
 		</div>
 		<div class="middle-content">

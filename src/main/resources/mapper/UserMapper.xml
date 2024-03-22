@@ -6,10 +6,9 @@
 
 	<insert id="join">
 	
-		insert into USER values(
-		
-		#{username},
-		#{password},
+		insert into USER(USERNAME,PASSWORD,USER_NM,USER_EML_ADDR,USER_TELNO,SCSBJT_NM,SMK_YN,JBTTL_NM,USER_ROLE) values(
+		#{USERNAME},
+		#{PASSWORD},
 		#{USER_NM},
 		#{USER_EML_ADDR},
 		#{USER_TELNO},
@@ -23,7 +22,7 @@
 
 	<select id="login" resultType="com.teamus.medic.command.UserVO">
 		
-		select * from user where username = #{username}
+		select * from USER where USERNAME = #{USERNAME}
 		
 	</select>
 		

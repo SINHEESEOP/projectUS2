@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.teamus.medic.CustomRememberMeHandler;
 
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurltyConfig {
@@ -38,7 +39,7 @@ public class SecurltyConfig {
 			.successHandler(authenticationSuccessHandler2())
 			.failureHandler(customLoginFailureHandler())
 			.and().exceptionHandling().accessDeniedPage("/deny")
-			.and().logout().logoutUrl("/logoutForm").logoutSuccessUrl("/");
+			.and().logout().logoutUrl("/logoutForm").logoutSuccessUrl("/LoginPageList");
 			
 		
 		
@@ -55,7 +56,7 @@ public class SecurltyConfig {
 														.antMatchers("/css/**").permitAll()
 														.antMatchers("/js/**").permitAll()
 														.antMatchers("/img/**").permitAll()
-														 .anyRequest().permitAll());
+														.anyRequest().permitAll());
 		
 			
 		return http.build();

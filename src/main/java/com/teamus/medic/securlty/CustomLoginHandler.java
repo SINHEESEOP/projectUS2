@@ -25,7 +25,7 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
 	if(role.equals("ROLE_USER")) {
 		 response.sendRedirect("/");
 	}else {
-		response.sendRedirect("admin/adminDscsnList");
+		response.sendRedirect("/admin/program/main");
 	}
 	
 		

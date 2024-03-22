@@ -1,6 +1,5 @@
 package com.teamus.medic.controller;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -87,9 +86,10 @@ public class MainController {
 	 @PostMapping("/joinForm")
 	 public String joinForm(UserVO vo) {
 		 
-		  
 		 String pw = bCryptPasswordEncoder.encode(vo.getPASSWORD());
+		 
 		 vo.setPASSWORD(pw);
+		 
 		 userMapper.join(vo);
 		 
 		 

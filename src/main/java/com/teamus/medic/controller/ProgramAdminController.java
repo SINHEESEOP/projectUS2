@@ -29,7 +29,12 @@ public class ProgramAdminController {
 	
 	
 	@GetMapping("/main")
-	public String main() {
+	public String main(Criteria cri , Model model) {
+		
+		List<ProgramRegVO> list = programService.getProgramApplyList(cri);
+		
+		model.addAttribute("list",list);
+		
 		return "admin/program/adminMain";
 	}
 	

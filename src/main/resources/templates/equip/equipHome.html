@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>의료기기 대여 시스템에 오신것을 환영합니다</title>
@@ -23,30 +24,26 @@
 		height: 460px;
 	}
 	
+	.middle-name {
+		margin: 10px;
+	}
+	
 </style>
 </head>
 <body>
 	<script>
-		
-		window.resizeTo(1480, 710);
-		$(document).ready(function(){
-			sessionStorage.setItem("currentUser","ST122341");
-			var cuser =sessionStorage.getItem("currentUser");
-			$(".userScreen").text(cuser+"님 환영합니다.");
-			//cuser는 유저번호 입니다.
-			//ajax get방식으로 보내서 유저이름 가져와서 넣어주면 좋을것같습니다.
-		});
+		window.resizeTo(1470,880);
 	</script>
-	<pre hidden="hidden">
-		놀랍게도 여기도 팝업처리이다
-	</pre>
+	
+
 	<div class="wrap">
 		<h2 class="reg-title">의료기기 대여/반납 페이지</h2>
-		<h5 class="reg-title userScreen"></h5>
-		<div>
-			<pre hidden="hidden">
-				이곳은 의료기기의 반납 대여를 진행 할수 있는 버튼이 있을거임
-			</pre>
+		<div>	
+		<div class="reg-title">
+			<th:block sec:authorize="isAuthenticated()">
+			<h3 class="middle-name">[[${#authentication.principal.username}]]님 안녕하세요</h3>
+			</th:block>
+		</div>
 		</div>
 		<div class="content-wrap">
 			<h3>대여/반납 절차</h3>
@@ -61,13 +58,14 @@
 		</div>
 	</div>
 	<script>
-		//$("#homeBtn").click(function(){
-			//window.confirm("홈으로 이동시 자동로그아웃 됩니다.");
-			//sessionStorage.setItem("currentUser","");
-			//window.close();
-			//location.href="/";
+		
+	
+	$("#homeBtn").click(function(){
+			sessionStorage.setItem("currentUser","");
+			window.close();
+			location.href="/admin/program/main";
 			
-		// }); 
+		}); 
 		
 		
 		
@@ -95,7 +93,6 @@
 		});
 		
 		$("#closeBtn").click(function(){
-			window.confirm("창을 닫으면 자동로그아웃 됩니다.");
 			sessionStorage.setItem("currentUser","");
 			window.close();
 		});

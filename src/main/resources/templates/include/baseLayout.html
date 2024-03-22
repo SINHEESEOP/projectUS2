@@ -14,6 +14,12 @@
   <link rel="stylesheet" th:href="@{/css/baseLayout.css}">
   <script defer th:src="@{/js/baseLayout.js}"></script>
   
+  <style>
+  	.pp > a {
+  		text-decoration:none;
+  		color:#606060;
+  	}
+  </style>
 
 </head>
 <body>
@@ -22,7 +28,7 @@
     <span class="title" th:onclick="|location.href='@{/admin/program/main}'|">우리 보건실</span>
     <span class="title2">us medic</span>
     </div>
-    <div><button type="button" class="headerBtn">로그아웃</button></div>
+    <div><button type="button" class="headerBtn" onclick="location.href='/logoutForm'">로그아웃</button></div>
   </div>
   <div class="section">	
   <div class="sidenav">
@@ -39,7 +45,7 @@
     <div class="menu2-wrap">
       <div class="menu"><span>상담</span></div>
       <div class="menu2-content">
-        <div class="menu2 list"><span>상담내역</span></div>
+        <div class="menu2 list"><span class="pp"><a href="/admin/adminDscsnList">상담내역</a></span></div>
       </div>
     </div>
     <div class="menu3-wrap">
@@ -53,8 +59,8 @@
     <div class="menu4-wrap">
       <div class="menu"><span>의료기기</span></div>
       <div class="menu4-content">
-        <div class="menu4 list"><span><a href="/admin/equip/toEquipReg">의료기기 신청</a></span></div>
-        <div class="menu4 rent"><span>의료기기 관리</a></span></div>
+        <div class="menu4 list"><span class="pp"><a href="/equip/toEquipHome">의료기기 대여/반납</a></span></div>
+        <div class="menu4 rent"><span class="pp"><a href="/admin/equip/toEquipReg">의료기기 관리</a></span></div>
       </div>
     </div>
   </div>

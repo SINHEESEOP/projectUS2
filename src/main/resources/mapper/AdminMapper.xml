@@ -34,12 +34,12 @@
                          
                             DSCSN_CN,
                             DSCSN_TTL,
-                            username)
+                            USERNAME)
     values(#{DSCSN_SN},
          
             #{DSCSN_CN},
             #{DSCSN_TTL},
-            #{username})
+            #{USERNAME})
 </insert>
 	
 
