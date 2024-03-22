@@ -28,7 +28,10 @@
     <span class="title" th:onclick="|location.href='@{/admin/program/main}'|">우리 보건실</span>
     <span class="title2">us medic</span>
     </div>
-    <div><button type="button" class="headerBtn" onclick="location.href='/logoutForm'">로그아웃</button></div>
+    <div class="right">
+    <button type="button" class="headerBtn" onclick="location.href='/'">메인으로</button>
+    <button type="button" class="headerBtn" onclick="location.href='/logoutForm'">로그아웃</button>
+    </div>
   </div>
   <div class="section">	
   <div class="sidenav">
@@ -39,7 +42,7 @@
         <div class="menu1 list"><span><a href="/admin/program/programList">프로그램 내역</a></span></div>
         <div class="menu1 aply"><span><a href="/admin/program/programApply">프로그램 신청내역</a></span></div>
         <div class="menu1 reg"><span><a href="/user/program/programUserList">(유저)프로그램 내역</a></span></div>
-        <div class="menu1 aply"><span><a href="/user/program/programUserApply?USERNAME=2016108101">(유저)프로그램 신청내역</a></span></div>   
+        <div class="menu1 aply"><span><a href="/user/program/programUserApply">(유저)프로그램 신청내역</a></span></div>   
       </div>
     </div>
     <div class="menu2-wrap">
@@ -51,7 +54,7 @@
     <div class="menu3-wrap">
       <div class="menu"><span>진료내역</span></div>
       <div class="menu3-content">
-        <div class="menu3 reg"><span class="pp"><a href="">진료내역</a></span></div>
+        <div class="menu3 reg"><span class="pp"><a href="/admin/pa_log/pa_logList">진료내역</a></span></div>
       </div>
     </div>
     <div class="menu4-wrap">

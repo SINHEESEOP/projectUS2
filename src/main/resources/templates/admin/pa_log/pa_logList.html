@@ -3,20 +3,68 @@
 <head>
 	<style>
 		.search {
-			border: 1px solid gray;
 			width: 100%;
 			margin: 0 auto;
 			padding: 20px;
 		}
 		
+		.search_design {
+			background-color: whitesmoke;
+			display: flex;
+			justify-content: start;
+			padding: 15px;
+			border-radius: 10px;
+			width: 800px;
+			margin: 0 auto 50px;
+			font-weight: bolder;
+			font-size: 16px;
+		}
+		
+		.search_left {
+			display: flex;
+			justify-content: space-between;
+			margin-right: 80px;
+			margin-left: 30px;
+		}
+		
+		.left_L_content {
+			margin-right: 10px;
+		}
+		
+		.search_right {
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		.right_L_content {
+			margin-right: 10px;
+		}
+		
 		.listMenu {
 			display: flex;
-			width: 100%;
+			justify-content: space-around;
+			padding: 15px;
 		}
 		
 		.listMenuP1 {
-			text-align: left;
+			display: flex;
+			justify-content: space-around;
 			width: 50%;
+			margin-left: 20px;
+		}
+		
+		.p11 {
+			background-color: white;
+			width: 90px;
+			text-align: center;
+			border-radius: 10px;
+		}
+		
+		.middle-content {
+			background-color: whitesmoke;
+			height: 1000px;
+			padding: 10px;
+			border-radius: 10px;
 		}
 		
 		p:hover {
@@ -36,6 +84,14 @@
 		
 		.pa_logReg {
 			display: none;
+			text-align: center;
+			background-color: white;
+			padding: 15px;
+			border-radius: 15px;
+		}
+		
+		.pa_logReg div {
+			margin-bottom: 15px;
 		}
 		
 		.pa_logList {
@@ -51,73 +107,108 @@
 <th:block th:replace="~{/include/baseLayout :: setContent( ~{:: .search} ) }">
 	
 	<div class="search">
-		<div class="search-Bno">
-			사용자 번호(학번, 교번) : <input type="text" name="mdexmBno" th:value="${userVo.USERNAME}" id="1" readonly>
-			<button onclick="showPopup()">검색</button>
-		</div>
-		<div>
-			학생 이름(사용자명) : <input type="text" name="userNm" th:value="${userVo.USER_NM}" id="2" readonly>
-		</div>
-		<div>
-			사용자 이메일주소 : <input type="text" name="userEmlAddr" th:value="${userVo.USER_EML_ADDR}" id="3" readonly>
-		</div>
-		<div>
-			직책명 : <input type="text" name="jbttlNm" id="4" th:value="${userVo.JBTTL_NM}" readonly>
-		</div>
-		<div>
-			흡연여부 : <input type="text" name="smkYn" id="5" th:value="${userVo.SMK_YN}" readonly>
-		</div>
-		<div>
-			학과명 : <input type="text" name="scsbjtNm" id="6" th:value="${userVo.SCSBJT_NM}" readonly>
-		</div>
 		
-		<hr>
 		
-		<div style="border-bottom : 1px solid gray" class="listMenu">
-			<p class="listMenuP1 p1">진료 기록</p>
-			<p class="listMenuP1 p2">진료서 작성</p>
-		</div>
-		<br>
-		
-		<div class="pa_logList">
-			<table>
-				<tr>
-					<th>진료 번호</th>
-					<th>진료 일자</th>
-					<th>진료 내용</th>
-					<th>처방 내용</th>
-					<th>수량</th>
-					<th>질병 코드</th>
-				</tr>
+		<div class="search_design">
+			
+			
+			<div class="search_left">
+				<div class="left_L_content">
+					<div>사용자 번호(학번, 교번) :</div>
+					<div>학생 이름(사용자명) :</div>
+					<div>사용자 이메일주소 :</div>
+				</div>
 				
-				<!--			th:href="@{productDetail(prod_id=${vo.prod_id})-->
+				<div class="left_R_content">
+					<div class="search-Bno ab">
+						<input type="text" name="mdexmBno" th:value="${userVo.USERNAME}" id="1" readonly style="margin-right: 5px">
+						<button onclick="showPopup()">검색</button>
+					</div>
+					<div class="ab">
+						<input type="text" name="userNm" th:value="${userVo.USER_NM}" id="2" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="userEmlAddr" th:value="${userVo.USER_EML_ADDR}" id="3" readonly>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="search_right">
+				<div class="right_L_content">
+					<div>직책명 :</div>
+					<div>흡연여부 :</div>
+					<div>학과명 :</div>
+				</div>
 				
-				<tr th:each="vo : ${listPaLog}">
-					<td>
-						<a th:href="@{pa_logDetail(MDEXM_BNO=${vo.MDEXM_BNO})}">
-							[[${vo.MDEXM_BNO}]]
-						</a>
-					</td>
-					<td>[[${vo.MDEXM_YMD}]]</td>
-					<td>[[${vo.MDEXM_CN}]]</td>
-					<td>[[${vo.MDEXM_CN2}]]</td>
-					<td>[[${vo.MDEXM_QTY}]]</td>
-					<td>[카테고리 미개발]</td>
-				</tr>
-			</table>
+				<div class="right_R_content">
+					<div class="ab">
+						<input type="text" name="jbttlNm" id="4" th:value="${userVo.JBTTL_NM}" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="smkYn" id="5" th:value="${userVo.SMK_YN}" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="scsbjtNm" id="6" th:value="${userVo.SCSBJT_NM}" readonly>
+					</div>
+				</div>
+			</div>
+		
+		
 		</div>
 		
-		<form class="pa_logReg" action="pa_logReg" method="post">
-			<input type="hidden" th:value="${userVo.USERNAME}" name="USERNAME" >
-			<div> 진료 번호 : <input type="text" name="MDEXM_BNO" readonly/> </div>
-			<div> 진료 일자 : <input type="text" name="MDEXM_YMD" readonly /></div>
-			<div> 질병 코드 : (카테고리 예정) <input type="text" name="DSS_CODE" value="test123" ></div>
-			<div> 진료 내용 : <textarea rows="10" cols="50" name="MDEXM_CN" ></textarea></div>
-			<div> 처방 내용 : <textarea rows="5" cols="25" name="MDEXM_CN2" ></textarea></div>
-			<div> 수량 : <input type="text" name="MDEXM_QTY" /></div>
-			<hr>
-			<button type="submit">작성 완료</button>
-		</form>
+		
+		<div class="middle-content">
+			<div class="listMenu">
+				<div class="listMenuP1 p1"><p class="p11">진료 기록</p></div>
+				<div class="listMenuP1 p2"><p class="p11">진료서 작성</p></div>
+			</div>
+			
+			
+			<div class="pa_logList">
+				<table>
+					<tr>
+						<th>진료 번호</th>
+						<th>진료 일자</th>
+						<th>진료 내용</th>
+						<th>처방 내용</th>
+						<th>수량</th>
+						<th>질병 코드</th>
+					</tr>
+					
+					<!--			th:href="@{productDetail(prod_id=${vo.prod_id})-->
+					
+					<tr th:each="vo : ${listPaLog}">
+						<td>
+							<form class="form2" action="logDetailForm" method="post">
+								[[${vo.MDEXM_BNO}]]
+								<input type="hidden" name="MDEXM_BNO" th:value="${vo.MDEXM_BNO}">
+								<input type="hidden" name="USERNAME" th:value="${userVo.USERNAME}">
+							</form>
+						</td>
+						<td>[[${vo.MDEXM_YMD}]]</td>
+						<td>[[${vo.MDEXM_CN}]]</td>
+						<td>[[${vo.MDEXM_CN2}]]</td>
+						<td>[[${vo.MDEXM_QTY}]]</td>
+						<td>[카테고리 미개발]</td>
+					</tr>
+				</table>
+			</div>
+			
+			
+			<form class="pa_logReg" action="pa_logReg" method="post">
+				<input type="hidden" th:value="${userVo.USERNAME}" name="USERNAME">
+				<div> 진료 번호 : <input type="text" name="MDEXM_BNO" readonly/></div>
+				<div> 진료 일자 : <input type="text" name="MDEXM_YMD" readonly/></div>
+				<div> 질병 코드 : (카테고리 예정) <input type="text" name="DSS_CODE" value="test123"></div>
+				<div> 진료 내용 : <textarea rows="10" cols="50" name="MDEXM_CN"></textarea></div>
+				<div> 처방 내용 : <textarea rows="5" cols="25" name="MDEXM_CN2"></textarea></div>
+				<div> 수량 : <input type="text" name="MDEXM_QTY"/></div>
+				<br>
+				<button type="submit">작성 완료</button>
+			</form>
+		</div>
+	
 	
 	</div>
 
@@ -157,6 +248,14 @@
 	document.querySelector(".p1").addEventListener('click', (e) => {
 		logList.style.display = 'block'
 		logReg.style.display = 'none'
+	})
+	
+	document.querySelectorAll(".form2").forEach((form2) => {
+		form2.addEventListener("click", () => {
+			
+			event.target.submit()
+			
+		})
 	})
 
 </script>

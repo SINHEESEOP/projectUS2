@@ -50,7 +50,7 @@
 	</div>
 	<form action="rentRegForm" method="post">
 		<p>학번</p>
-		<input type="text" value="" readonly="readonly" name="USER_NO" id="USER_NO">
+		<input type="text" value="" readonly="readonly" name="USERNAME" id="USERNAME">
 		
 		<p>대여물품을 선택하세요</p>
 		<select name="ISTR_NM" id="ISTR_SEC" required="required">
@@ -92,9 +92,9 @@
 		$("#closeBtn").click(function(){
 			window.close();
 		});
-		var currentUser;
-		$("#USER_NO").attr("value",currentUser);
-		
+
+		var currentUser=localStorage.getItem("currentUser");
+		$("#USERNAME").attr("value",currentUser);
 		
 	</script>
 </html>

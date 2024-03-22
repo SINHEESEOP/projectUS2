@@ -91,8 +91,8 @@ from CLNC_LIST
 </select>
 
 <select id="getProgramApplyTotal" resultType="int">
-SELECT count(*) FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
-LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO	
+SELECT COUNT(*) FROM CLNC_REG R LEFT JOIN USER U ON R.USERNAME = U.USERNAME
+	LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
 	<if test='searchContent eq "program"'>
 		where EVNT_NM like concat('%',#{searchValue},'%')
 	</if>
@@ -102,10 +102,10 @@ LEFT JOIN CLNC_LIST L ON R.EVNT_NO = L.EVNT_NO
 	<if test='searchContent eq "department"'>
 		where SCSBJT_NM like concat('%',#{searchValue},'%')
 	</if>
-	<if test='searchContent eq "Y"'>
+	<if test='searchContent eq "applyY"'>
 		where EVNT_REG_YN = 'Y'
 	</if>
-	<if test='searchContent eq "N"'>
+	<if test='searchContent eq "applyN" '>
 		where EVNT_REG_YN = 'N'
 	</if>
 	<if test='searchContent eq "successY"'>

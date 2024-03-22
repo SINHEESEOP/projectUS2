@@ -27,4 +27,7 @@ public class Pa_logServiceImpl implements Pa_logService {
 	public int logInsert(Pa_logVO vo) {
 		return paLogMapper.logInsert(vo);
 	};
+	public Pa_logVO getDetailPaLog (int MDEXM_BNO) {
+		return paLogMapper.getDetailPaLog(MDEXM_BNO);
+	}
 }

@@ -15,4 +15,5 @@ public interface Pa_logMapper {
 	public ArrayList<Pa_logVO> getListPaLog(String query);
 	public UserVO getUser(String query);
 	public int logInsert(Pa_logVO vo);
+	public Pa_logVO getDetailPaLog (int MDEXM_BNO);
 }

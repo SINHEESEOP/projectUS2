@@ -62,4 +62,15 @@
                 #{DSS_CODE})
     </insert>
 
+    <select id="getDetailPaLog" resultType="Pa_logVO">
+        SELECT  MDEXM_BNO,
+                MDEXM_YMD,
+                MDEXM_CN,
+                MDEXM_CN2,
+                MDEXM_QTY,
+                DSS_CODE
+        FROM PA_LOG
+        WHERE MDEXM_BNO = #{MDEXM_BNO}
+    </select>
+
 </mapper>
