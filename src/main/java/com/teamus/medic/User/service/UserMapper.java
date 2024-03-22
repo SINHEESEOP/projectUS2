@@ -9,5 +9,6 @@ public interface UserMapper {
 	
 	void join(UserVO vo);
 	UserVO login(String username);
-	
+	UserVO myPage(String username);
+	void updateForm(UserVO vo);
 }

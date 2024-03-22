@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"  
 	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="setContent(content)">
 <head>
+
 <meta charset="utf-8" />
 <title>Document</title>
 
@@ -89,7 +92,7 @@
 
   #img {width: 100px; height: 100px;}
 
-  .top-logo {display: flex; align-items: center; width: 250px; cursor: pointer;}
+  .top-logo {display: flex; align-items: center; width: 250px; cursor : pointer;}
   .top-logo > a {margin-left: 10px; width: 100%;}
   #login > button:hover { transform: scale(1.2);
   transform-origin: center;
@@ -102,13 +105,12 @@
 	#Topusername  > p > span {color : blue;}
 	
 	#myPageBtn {margin-top : 20px;}
-	
     </style>
-  
-</head>
-
-
-<header id="top-bar">
+	</head>
+    
+    <body>
+    
+   <header id="top-bar">
   <div class="top-logo" onclick="location.href='/';">
     <a style="font:bold 20px malgun gothic; text-align: center;" >우리</a><img th:src="@{/img/free-icon-hospital-3252173.png}" id="img"> <a style="font:bold 20px malgun gothic; color: red; "> 보건실</a>
   </div>
@@ -126,7 +128,7 @@
     <li><a href="#" class="slideBtn2">프로그램 신청</a>
 			<ul id="slide2">
 				<li><a th:href="@{/user/program/programUserList}">프로그램 내역</a></li>
-				<li><a th:href="@{/programUserApply}">신청내역</a></li>
+				<li><a th:href="@{/user/program/programUserApply}">신청내역</a></li>
 			</ul>
 	</li>
 
@@ -155,13 +157,19 @@
     <th:block sec:authorize="isAuthenticated()">
     <div id="Topusername">
     <p><span>[[${#authentication.principal.username }]]</span> 님 환영합니다</p>
-    <button id="myPageBtn"onclick="location.href='myPage';">마이페이지</button>
+    <button id="myPageBtn" onclick="location.href='/myPage';">마이페이지</button>
     
     <button id="logoutBtn" onclick="location.href='logoutForm';">로그아웃</button>
-    
     </div>
-
+    </header>
+    <th:block th:replace=${content}>
+</th:block>
+    </body>
     </th:block>
+
+    
+    
+    
     
     
  <script th:inline="javascript">
@@ -200,89 +208,6 @@
 		
     </script>
     
-</header>
-
-
-
-<style>
-
-
-  /* 메인페이지*/
-
-  #mainbox {width: 1400px; height: 500px; margin: 0 auto; display: flex;}
-  #mainbox > div {width: 50%;}
-  #imgbox {display: flex; justify-content: space-around; align-items: center; margin-top: 200px;}
-  #mo  {width: 50px;}
-  #mo1 {width: 50px;}
-
-  #imgsilder {position: relative; padding-top: 10px; margin-top: 200px;}
-
-
- 
-  swiper-container {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-    }
-
-    swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    swiper-slide img {
-      display: block;
-      width:100%;
-      height: 100%;
-      object-fit: cover;
-    }
-</style>
-
-<body>
-
-
-
-
-
-<section>
-  <div id="mainbox">
-    <div id="imgbox">
-    <div style="position: absolute; left: 350px; top: 250px;"><img src="/img/mo.png" id="mo"></div>
-      <div style="position: absolute; left: 800px; top: 400px;"><img src="/img/mo1.png" id="mo1"></div>
-      <div> 
-        <p style="font-size: 2.222em;">보건실에서 대학구성원의 <br>
-       
-        <span style="font-weight: 700; color: #000;">건강을 책임</span>집니다.</p>
-      </div>
-    </div>
-    <div id="imgsilder">
-    <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true" css-mode="true" loop="true" autoplay="true" delay="2000">
-    <swiper-slide><a href="https://ncov.kdca.go.kr/"> <img th:src="@{/img/projectimg1.jpeg}"></a></swiper-slide>
-    <swiper-slide><a href="https://www.kdca.go.kr/">  <img th:src="@{/img/projectimg2.jpeg}"></a></swiper-slide>
-    <swiper-slide><a href="https://www.mohw.go.kr/">  <img th:src="@{/img/projectimg3.jpeg}"></a></swiper-slide>
-    <swiper-slide><a href="https://www.e-gen.or.kr/"> <img th:src="@{/img/projectimg4.jpeg}"></a></swiper-slide>
-    <swiper-slide><a href="https://www.moe.go.kr/">   <img th:src="@{/img/projectimg5.jpeg}"></a></swiper-slide>
-   
-  </swiper-container>
-
-    </div>
-  </div>
-
-<div style="height: 2000px;"></div>
-
-
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-
-
-
-
-
-</body>
+  
+  
+</html>

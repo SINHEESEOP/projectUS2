@@ -62,8 +62,7 @@
 			<input type="button" id="homeBtn" value="홈으로">
 			<input type="button" id="listBtn" value="물품목록보기">
 			<input type="button" id="rentBtn" value="물품대여">
-			<input type="button" id="returnBtn" value="물품반납">
-			<input type="button" id="closeBtn" value="창닫기"> 
+			<input type="button" id="returnBtn" value="물품반납"> 
 		</div>
 	</div>
 	<script>
@@ -71,11 +70,11 @@
 		console.log(currentUser);
 		localStorage.setItem("currentUser",currentUser);
 		
-		$("#homeBtn").click(function(){
-			
-			location.href="/";
-			
-		}); 
+
+	$("#homeBtn").click(function(){
+    
+		  location.href="/";
+	}); 
 		
 		
 		
@@ -96,16 +95,13 @@
 		$("#returnBtn").click(function(){
 			
 			var url="toEquipReturn?user="+currentUser;
+
 			var name="반납하기";
 			var option="width=400,length=300,top=100,left=50,location=no";
 			window.open(url,name,option);
 			
 		});
 		
-		$("#closeBtn").click(function(){
-			console.log(1);
-			
-		});
 		
 		
 	</script>

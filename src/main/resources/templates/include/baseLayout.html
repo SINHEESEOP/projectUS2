@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+
+
 <th:block th:fragment="setContent (content )">
 <head>
   <meta charset="UTF-8">
@@ -8,8 +10,8 @@
   <title>Document</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
   <script th:src="@{/js/jquery.min.js}"></script>
   <link rel="stylesheet" th:href="@{/css/baseLayout.css}">
   <script defer th:src="@{/js/baseLayout.js}"></script>
@@ -22,6 +24,10 @@
   </style>
 
 </head>
+
+
+
+
 <body>
   <div class="header">
     <div>
@@ -40,9 +46,7 @@
       <div class="menu1-content">
         <div class="menu1 reg"><span><a href="/admin/program/programReg" class="d">프로그램 등록</a></span></div>
         <div class="menu1 list"><span><a href="/admin/program/programList">프로그램 내역</a></span></div>
-        <div class="menu1 aply"><span><a href="/admin/program/programApply">프로그램 신청내역</a></span></div>
-        <div class="menu1 reg"><span><a href="/user/program/programUserList">(유저)프로그램 내역</a></span></div>
-        <div class="menu1 aply"><span><a href="/user/program/programUserApply">(유저)프로그램 신청내역</a></span></div>   
+        <div class="menu1 aply"><span><a href="/admin/program/programApply">프로그램 신청내역</a></span></div> 
       </div>
     </div>
     <div class="menu2-wrap">
