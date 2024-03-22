@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.teamus.medic.admin.service.adminService;
 import com.teamus.medic.command.ProgramRegVO;
 import com.teamus.medic.command.ProgramVO;
 import com.teamus.medic.command.UserVO;
+import com.teamus.medic.command.adminVO;
 import com.teamus.medic.program.service.ProgramService;
 import com.teamus.medic.util.Criteria;
 import com.teamus.medic.util.PageVO;
@@ -27,13 +29,18 @@ public class ProgramAdminController {
 	@Qualifier("programService")
 	private ProgramService programService;
 	
+	@Autowired
+	private adminService adminservice; 
+	
 	
 	@GetMapping("/main")
 	public String main(Criteria cri , Model model) {
 		
 		List<ProgramRegVO> list = programService.getProgramApplyList(cri);
+		List<adminVO> list2 = adminservice.getDscsnList();
 		
 		model.addAttribute("list",list);
+		model.addAttribute("list2" , list2);
 		
 		return "admin/program/adminMain";
 	}
