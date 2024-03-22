@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>상세보기</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<style>
+	body {
+  		font-family: 'Open Sans', sans-serif;
+  		font-weight: 300;
+  		line-height: 1.42em;
+  		color:yellow;
+  		background-color:#1F2739;
+	}
+
+	.wrap-popup > button{
+		padding :10px;
+		font-size: 16px;
+		background-color: cadetblue;
+		color: azure;
+	}
+	
+	
+	
+	.detailImg{
+	width: 400px;
+	height: 300px;
+	
+	}
+	.reg-title {
+      border-top: 2px solid #000;
+      border-bottom: 3px solid #ccc;
+      padding-left: 10px;
+      margin-top : 50px;
+    }
+    
+ 	.content-wrap {
+     width: 100%;
+     padding: 10px;
+     border-collapse: collapse;
+ 	}
+ 	.content-wrap .first th,td {
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .content-wrap tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .content-wrap .first {
+      border-bottom: 3px solid #ccc;
+    }
+    .content-wrap th {
+      padding: 20px;
+      text-align: center;
+    }
+</style>
+</head>
+<script>
+	window.resizeTo(480, 670);
+</script>
+<body>
+	<section class="wrap-popup">
+	<h1 class="reg-title">상세 보기</h1>
+		<div>
+			<img alt="noImage" src="" class="detailImg">
+		</div>
+	<table class="content-wrap">
+		<tr class="first">
+			<th>품명</th>
+			<th>코드번호</th>
+			<th>수량</th>
+		</tr>
+		<tr>
+			<td>[[${vo.ISTR_NM}]]</td>	
+			<td>[[${vo.ISTR_CODE}]]</td>	
+			<td>[[${vo.ISTR_QTY}]]</td>
+		</tr>		
+	</table>
+	<button type="button" class="closeBtn">닫기</button>
+	</section>
+	
+
+</body>
+<script th:inline="javascript">
+ 
+	var code = '[[${vo.ISTR_CODE}]]'.replace("\"","").replace("\"","");
+	
+	var imgRoute="/img/".concat(code).concat(".jpg");
+	
+	$(".detailImg").attr("src",imgRoute);
+	
+	$(".closeBtn").click(function(){
+		window.close();
+	});
+</script>
+</html>

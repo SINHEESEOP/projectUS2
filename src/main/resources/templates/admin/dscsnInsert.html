@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programReg.css">
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+	
+	<div class="wrap">
+      <div class="reg-title">
+        <p>상담등록하기</p>
+      </div>
+      <div class="reg-content">
+        <div>
+          <p>제목 : <input type="text" name="DSCSN_TTL"></p>
+        </div>
+        <div>
+          <p>담당 상담자 : <input type="text" name="USERNAME"></p>
+        </div>
+      </div>
+      <div class="info">
+        <p>상담 내용 : </p>
+        <div><textarea name="DSCSN_CN" id="" cols="30" rows="10"></textarea></div>
+      </div>
+      <div class="reg-button">
+        <button type="button" class="reg" id="insertBtn">등록</button>
+        <button type="button" class="list" id="listBtn">목록</button>
+      </div>
+    </div>
+    </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</html>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script>
+    
+    $(document).ready(function(){
+		  $("#listBtn").click(function(){
+		    window.location.href = "adminDscsnList";
+		  });
+		});
+    
+    
+	var insertBtn = document.getElementById("insertBtn");
+	
+	insertBtn.addEventListener('click', function(){
+		
+		event.preventDefault();
+		
+		document.insertForm.action= "insertForm";
+		document.insertForm.submit();
+	});
+   
+   
+    </script>
+    
+</body>
+
+</html>

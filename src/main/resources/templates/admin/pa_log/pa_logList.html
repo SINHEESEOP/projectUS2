@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		.search {
+			border: 1px solid gray;
+			width: 100%;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		
+		.listMenu {
+			display: flex;
+			width: 100%;
+		}
+		
+		.listMenuP1 {
+			text-align: left;
+			width: 50%;
+		}
+		
+		p:hover {
+			color: green;
+		}
+		
+		table, td, th {
+			border: 1px solid gray;
+			text-align: center;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		th, td {
+			width: 10%;
+		}
+		
+		.pa_logReg {
+			display: none;
+		}
+		
+		.pa_logList {
+			display: block;
+		}
+	
+	</style>
+	<title>진료</title>
+</head>
+<body>
+<meta charset="UTF-8">
+
+<th:block th:replace="~{/include/baseLayout :: setContent( ~{:: .search} ) }">
+	
+	<div class="search">
+		<div class="search-Bno">
+			사용자 번호(학번, 교번) : <input type="text" name="mdexmBno" th:value="${userVo.USERNAME}" id="1" readonly>
+			<button onclick="showPopup()">검색</button>
+		</div>
+		<div>
+			학생 이름(사용자명) : <input type="text" name="userNm" th:value="${userVo.USER_NM}" id="2" readonly>
+		</div>
+		<div>
+			사용자 이메일주소 : <input type="text" name="userEmlAddr" th:value="${userVo.USER_EML_ADDR}" id="3" readonly>
+		</div>
+		<div>
+			직책명 : <input type="text" name="jbttlNm" id="4" th:value="${userVo.JBTTL_NM}" readonly>
+		</div>
+		<div>
+			흡연여부 : <input type="text" name="smkYn" id="5" th:value="${userVo.SMK_YN}" readonly>
+		</div>
+		<div>
+			학과명 : <input type="text" name="scsbjtNm" id="6" th:value="${userVo.SCSBJT_NM}" readonly>
+		</div>
+		
+		<hr>
+		
+		<div style="border-bottom : 1px solid gray" class="listMenu">
+			<p class="listMenuP1 p1">진료 기록</p>
+			<p class="listMenuP1 p2">진료서 작성</p>
+		</div>
+		<br>
+		
+		<div class="pa_logList">
+			<table>
+				<tr>
+					<th>진료 번호</th>
+					<th>진료 일자</th>
+					<th>진료 내용</th>
+					<th>처방 내용</th>
+					<th>수량</th>
+					<th>질병 코드</th>
+				</tr>
+				
+				<!--			th:href="@{productDetail(prod_id=${vo.prod_id})-->
+				
+				<tr th:each="vo : ${listPaLog}">
+					<td>
+						<a th:href="@{pa_logDetail(MDEXM_BNO=${vo.MDEXM_BNO})}">
+							[[${vo.MDEXM_BNO}]]
+						</a>
+					</td>
+					<td>[[${vo.MDEXM_YMD}]]</td>
+					<td>[[${vo.MDEXM_CN}]]</td>
+					<td>[[${vo.MDEXM_CN2}]]</td>
+					<td>[[${vo.MDEXM_QTY}]]</td>
+					<td>[카테고리 미개발]</td>
+				</tr>
+			</table>
+		</div>
+		
+		<form class="pa_logReg" action="pa_logReg" method="post">
+			<input type="hidden" th:value="${userVo.USERNAME}" name="USERNAME" >
+			<div> 진료 번호 : <input type="text" name="MDEXM_BNO" readonly/> </div>
+			<div> 진료 일자 : <input type="text" name="MDEXM_YMD" readonly /></div>
+			<div> 질병 코드 : (카테고리 예정) <input type="text" name="DSS_CODE" value="test123" ></div>
+			<div> 진료 내용 : <textarea rows="10" cols="50" name="MDEXM_CN" ></textarea></div>
+			<div> 처방 내용 : <textarea rows="5" cols="25" name="MDEXM_CN2" ></textarea></div>
+			<div> 수량 : <input type="text" name="MDEXM_QTY" /></div>
+			<hr>
+			<button type="submit">작성 완료</button>
+		</form>
+	
+	</div>
+
+</th:block>
+
+<script th:inline="javascript">
+	
+	let msg = `[[${msg}]]`
+	// msg = JSON.parse(msg);
+	// "null" 이라 json 으로 변환 시 "" 가 벗겨짐.
+	// 그렇게 되면 굳이 아래에서 'null' 로 체크 안해줘도 된다~
+	
+	if (msg === 'null') {
+		console.log('똥꾸멍멍멍')
+	} else {
+		alert(msg)
+	}
+	
+	function showPopup() {
+		window.open("popup", "a", "width=690, height=500, top=150, left=200");
+	}
+	
+	function processData() {
+		var queryValue = document.getElementById("1").value;
+		
+		window.location.href = `/admin/pa_log/popupList?query=${encodeURIComponent(queryValue)}`
+	}
+	
+	var logList = document.querySelector(".pa_logList")
+	var logReg = document.querySelector(".pa_logReg")
+	
+	document.querySelector(".p2").addEventListener('click', (e) => {
+		logList.style.display = 'none'
+		logReg.style.display = 'block'
+	})
+	
+	document.querySelector(".p1").addEventListener('click', (e) => {
+		logList.style.display = 'block'
+		logReg.style.display = 'none'
+	})
+
+</script>
+
+</body>
+
+</html>

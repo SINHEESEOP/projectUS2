@@ -1,0 +1,110 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="/css/programReg.css">
+
+<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+	
+	<div class="wrap">
+      <div class="reg-title">
+      	<p>상담 상세정보</p>
+      </div>
+      <input type="hidden" name="USERNAME" value="${vo.USERNAME}">
+      <form name="updateForm" action="updateForm" method="post">
+      <div class="reg-content">
+           <div>
+          	<p>상담 제목 : </p>
+          	<div>
+           <input type="text" name="DSCSN_TTL" th:value="${vo.DSCSN_TTL}">
+          	</div>
+          <div>
+          </div>
+        </div>
+        <div>
+          <p>담당 상담자 : [[${vo.USERNAME}]]</p>
+        </div>
+        <div>
+          <p>상담 학생 : </p>
+          <div>
+           <input type="text" value="신주형" readonly="readonly">
+          </div>
+        </div>
+        <div>
+          <p name="DSCSN_REG_YMD">신청일 : [[${ #temporals.format(vo.DSCSN_REG_YMD,'yyyy년MM월dd일')}]] </p>
+        </div>
+      </div>
+      <div class="info">
+        <p>상담 내용 : </p>
+        <div><textarea name="DSCSN_CN" cols="30" rows="10">[[${vo.DSCSN_CN}]]</textarea></div>
+      </div>
+      <div class="reg-button">
+      
+        <button type="button" class="reg" id="updateBtn">수정</button>
+        <button type="button" id="listBtn" class="list">목록</button>
+        <button type="button" id="deleteBtn" class="list">삭제</button>
+      </div>
+      <input hidden="hidden" name="DSCSN_SN" th:value="${vo.DSCSN_SN}">
+      </form>
+      
+    </div>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+	
+	var updateBtn = document.getElementById("updateBtn");
+	
+	updateBtn.addEventListener('click', function(){
+		
+		
+		event.preventDefault();
+		document.updateForm.action= "updateForm";
+		document.updateForm.submit();
+		
+		
+	});
+	
+	
+	$(document).ready(function(){
+		  $("#listBtn").click(function(){
+		    window.location.href = "adminDscsnList";
+		  });
+		});
+	
+	
+	
+	
+	var deleteBtn = document.getElementById("deleteBtn");
+	
+	deleteBtn.addEventListener('click',function(){
+		
+		event.preventDefault();
+		
+		if(confirm("삭제후에는 데이터를 복구 할 수 없습니다.") == false){
+			return;
+		}
+		
+		document.updateForm.action= "deleteForm";
+		document.updateForm.submit();
+		
+		
+	});
+	
+	
+
+</script>
+
+
+
+</html>

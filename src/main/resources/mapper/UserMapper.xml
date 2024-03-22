@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teamus.medic.User.service.UserMapper">
+
+	<insert id="join">
+	
+		insert into USER(USERNAME,PASSWORD,USER_NM,USER_EML_ADDR,USER_TELNO,SCSBJT_NM,SMK_YN,JBTTL_NM,USER_ROLE) values(
+		#{USERNAME},
+		#{PASSWORD},
+		#{USER_NM},
+		#{USER_EML_ADDR},
+		#{USER_TELNO},
+		#{SCSBJT_NM},
+		#{SMK_YN},
+		#{JBTTL_NM},
+		#{USER_ROLE}
+		)
+	
+	</insert>
+
+	<select id="login" resultType="com.teamus.medic.command.UserVO">
+		
+		select * from USER where USERNAME = #{USERNAME}
+		
+	</select>
+		
+		
+
+
+</mapper>

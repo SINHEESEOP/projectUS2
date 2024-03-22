@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>의료기기 대여 시스템에 오신것을 환영합니다</title>
+<link rel="stylesheet" href="/css/programList.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+	.content-wrap > input{
+		width: 160px;
+		height: 45px;
+		font-size: 14px;
+		font-weight :700;
+		background-color: cadetblue;
+	}
+	
+	.content-screen{
+		width: 1400px;
+		height: 400px;
+	}
+	.content-screen > img{
+		width: 1410px;
+		height: 460px;
+	}
+	
+	.middle-name {
+		margin: 10px;
+	}
+	
+</style>
+</head>
+<body>
+	<script>
+		window.resizeTo(1470,880);
+	</script>
+	
+
+	<div class="wrap">
+		<h2 class="reg-title">의료기기 대여/반납 페이지</h2>
+		<div>	
+		<div class="reg-title">
+			<th:block sec:authorize="isAuthenticated()">
+			<h3 class="middle-name">[[${#authentication.principal.username}]]님 안녕하세요</h3>
+			</th:block>
+		</div>
+		</div>
+		<div class="content-wrap">
+			<h3>대여/반납 절차</h3>
+			<div class="content-screen">
+				<img alt="off" src="/img/medvc.jpg">
+			</div>
+			<input type="button" id="homeBtn" value="홈으로">
+			<input type="button" id="listBtn" value="물품목록보기">
+			<input type="button" id="rentBtn" value="물품대여">
+			<input type="button" id="returnBtn" value="물품반납">
+			<input type="button" id="closeBtn" value="창닫기"> 
+		</div>
+	</div>
+	<script>
+		
+	
+	$("#homeBtn").click(function(){
+			sessionStorage.setItem("currentUser","");
+			window.close();
+			location.href="/admin/program/main";
+			
+		}); 
+		
+		
+		
+		$("#listBtn").click(function(){
+			var url="toEquipList";
+			var name="의료기기 목록보기";
+			var option="width=300,length=300,top=50,left=25,location=no,scrollbars=no";
+			window.open(url,name,option);
+		});
+		$("#rentBtn").click(function(){
+			var url="toRentReg";
+			var name="대여신청하기";
+			var option="width=300,length=300,top=50,left=25,location=no";
+			window.open(url,name,option);
+			
+		});
+		
+		$("#returnBtn").click(function(){
+			var cuser=sessionStorage.getItem("currentUser");
+			var url="toEquipReturn?user="+cuser;
+			var name="반납하기";
+			var option="width=400,length=300,top=100,left=50,location=no";
+			window.open(url,name,option);
+			
+		});
+		
+		$("#closeBtn").click(function(){
+			sessionStorage.setItem("currentUser","");
+			window.close();
+		});
+		
+		
+	</script>
+</body>
+</html>

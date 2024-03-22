@@ -1,0 +1,38 @@
+body{
+	width: 500px;
+	height: 500px;
+}
+.detailImg{
+	width: 300px;
+	height: 200px;
+	
+}
+.reg-title {
+      border-top: 2px solid #000;
+      border-bottom: 3px solid #ccc;
+      padding-left: 10px;
+      margin-top : 50px;
+    }
+    
+ .content-wrap {
+     width: 100%;
+     padding: 10px;
+     border-collapse: collapse;
+ }
+ .content-wrap .first th {
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .content-wrap tr {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .content-wrap .first {
+      border-bottom: 3px solid #ccc;
+    }
+    .content-wrap th {
+      padding: 20px;
+      text-align: center;
+    }

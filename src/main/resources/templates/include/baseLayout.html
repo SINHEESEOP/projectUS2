@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="setContent (content )">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/baseLayout.css}">
+  <script defer th:src="@{/js/baseLayout.js}"></script>
+  
+  <style>
+  	.pp > a {
+  		text-decoration:none;
+  		color:#606060;
+  	}
+  </style>
+
+</head>
+<body>
+  <div class="header">
+    <div>
+    <span class="title" th:onclick="|location.href='@{/admin/program/main}'|">우리 보건실</span>
+    <span class="title2">us medic</span>
+    </div>
+    <div><button type="button" class="headerBtn" onclick="location.href='/logoutForm'">로그아웃</button></div>
+  </div>
+  <div class="section">	
+  <div class="sidenav">
+    <div class="menu1-wrap">
+      <div class="menu"><span>프로그램</span></div>
+      <div class="menu1-content">
+        <div class="menu1 reg"><span><a href="/admin/program/programReg" class="d">프로그램 등록</a></span></div>
+        <div class="menu1 list"><span><a href="/admin/program/programList">프로그램 내역</a></span></div>
+        <div class="menu1 aply"><span><a href="/admin/program/programApply">프로그램 신청내역</a></span></div>
+        <div class="menu1 reg"><span><a href="/user/program/programUserList">(유저)프로그램 내역</a></span></div>
+        <div class="menu1 aply"><span><a href="/user/program/programUserApply?USERNAME=2016108101">(유저)프로그램 신청내역</a></span></div>   
+      </div>
+    </div>
+    <div class="menu2-wrap">
+      <div class="menu"><span>상담</span></div>
+      <div class="menu2-content">
+        <div class="menu2 list"><span class="pp"><a href="/admin/adminDscsnList">상담내역</a></span></div>
+      </div>
+    </div>
+    <div class="menu3-wrap">
+      <div class="menu"><span>의약품</span></div>
+      <div class="menu3-content">
+        <div class="menu3 reg"><span>의약품등록</span></div>
+        <div class="menu3 list"><span>의약품 입출고내역</span></div>
+        <div class="menu3 info"><span>의약품관리</span></div>
+      </div>
+    </div>
+    <div class="menu4-wrap">
+      <div class="menu"><span>의료기기</span></div>
+      <div class="menu4-content">
+        <div class="menu4 list"><span class="pp"><a href="/equip/toEquipHome">의료기기 대여/반납</a></span></div>
+        <div class="menu4 rent"><span class="pp"><a href="/admin/equip/toEquipReg">의료기기 관리</a></span></div>
+      </div>
+    </div>
+  </div>
+    <th:block th:replace=${content}>
+    </th:block>
+  </div>
+<div class="footer">
+	<div>
+	<p>Copyright © 2024 by US - All rights reserved.</p>
+	<p>우리 보건실</p>
+	<p>(강남인재KDT 실습실)프로젝트-위지언(4조)</p>
+	<p>강태혁,신주형,박지원,고현진,신희섭<p>
+	</div>
+</div>
+</body>
+	</th:block>
+
+
+</html>
