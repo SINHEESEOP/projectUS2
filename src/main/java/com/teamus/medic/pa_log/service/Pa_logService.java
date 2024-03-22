@@ -3,6 +3,7 @@ package com.teamus.medic.pa_log.service;
 import com.teamus.medic.command.Pa_logVO;
 import com.teamus.medic.command.UserVO;
 import com.teamus.medic.util.Search;
+import org.apache.catalina.User;
 
 import java.util.ArrayList;
 
@@ -13,5 +14,6 @@ public interface Pa_logService {
 	public ArrayList<Pa_logVO> getListPaLog(String query);
 	public UserVO getUser(String query);
 	public int logInsert(Pa_logVO vo);
+	public Pa_logVO getDetailPaLog (int MDEXM_BNO);
 
 }

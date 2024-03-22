@@ -18,12 +18,12 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		
-		
+
+
 		String role = ((MyUserDetails)authentication.getPrincipal() ).getRole();
+
 		
 		String username = ((MyUserDetails)authentication.getPrincipal() ).getUsername();
-		
 		
 		
 	if(role.equals("ROLE_USER")) {
@@ -31,11 +31,11 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
 	}else {
 		response.sendRedirect("/admin/program/main");
 	}
-	
-		
-		
+
+
+
 //		List<String> roleNames = new ArrayList<>();
-//		
+//
 //		authentication.getAuthorities().forEach(authority -> {
 //			System.out.println(authority.getAuthority());
 //			roleNames.add(authority.getAuthority());
@@ -50,22 +50,22 @@ public class CustomLoginHandler implements AuthenticationSuccessHandler {
 ////			response.sendRedirect("/sample/member1231232");
 ////			return;
 ////		}
-//	
-		
-		System.out.println(authentication);  
+//
+
+		System.out.println(authentication);
 		System.out.println(authentication.getPrincipal()  );
 		System.out.println( ((MyUserDetails)authentication.getPrincipal() ).getRole() );
-		
-		
+
+
 //	     List<GrantedAuthority> authList = (List<GrantedAuthority>) authentication.getAuthorities();
 //	        System.out.println("권한: ");
 //	        for(int i=0; i<authList.size(); i++){
 //	        	System.out.println(authList.get(i).getAuthority() + " ");
 //	        }
-		
-		
-		
-		
+
+
+
+
 	}
 
 }

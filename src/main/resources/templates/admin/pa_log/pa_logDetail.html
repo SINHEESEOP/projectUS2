@@ -3,8 +3,115 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
+	
+	<style>
+		
+		.Detail {
+			width: 100%;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		
+		.search_design {
+			background-color: whitesmoke;
+			display: flex;
+			justify-content: start;
+			padding: 15px;
+			border-radius: 10px;
+			width: 800px;
+			margin: 0 auto 50px;
+			font-weight: bolder;
+			font-size: 16px;
+		}
+		
+		.search_left {
+			display: flex;
+			justify-content: space-between;
+			margin-right: 80px;
+			margin-left: 30px;
+		}
+		
+		.left_L_content {
+			margin-right: 10px;
+		}
+		
+		.search_right {
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		.right_L_content {
+			margin-right: 10px;
+		}
+	</style>
+
 </head>
 <body>
-adfadsf
+
+<th:block th:replace="~{/include/baseLayout :: setContent( ~{:: .Detail} ) }">
+	
+	<div class="Detail">
+		
+		<div class="search_design">
+			
+			
+			<div class="search_left">
+				<div class="left_L_content">
+					<div>사용자 번호(학번, 교번) :</div>
+					<div>학생 이름(사용자명) :</div>
+					<div>사용자 이메일주소 :</div>
+				</div>
+				
+				<div class="left_R_content">
+					<div class="search-Bno ab">
+						<input type="text" name="mdexmBno" th:value="${userVo.USERNAME}" id="1" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="userNm" th:value="${userVo.USER_NM}" id="2" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="userEmlAddr" th:value="${userVo.USER_EML_ADDR}" id="3" readonly>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="search_right">
+				<div class="right_L_content">
+					<div>직책명 :</div>
+					<div>흡연여부 :</div>
+					<div>학과명 :</div>
+				</div>
+				
+				<div class="right_R_content">
+					<div class="ab">
+						<input type="text" name="jbttlNm" id="4" th:value="${userVo.JBTTL_NM}" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="smkYn" id="5" th:value="${userVo.SMK_YN}" readonly>
+					</div>
+					<div class="ab">
+						<input type="text" name="scsbjtNm" id="6" th:value="${userVo.SCSBJT_NM}" readonly>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		
+		<div>[[${paLogVO.MDEXM_BNO}]]</div>
+		<div>[[${paLogVO.MDEXM_YMD}]]</div>
+		<div>[[${paLogVO.MDEXM_CN}]]</div>
+		<div>[[${paLogVO.MDEXM_CN2}]]</div>
+		<div>[[${paLogVO.DSS_CODE}]]</div>
+		
+		<button>수정 완료</button>
+		<button>삭제하기</button>
+	
+	</div>
+
+
+</th:block>
+
 </body>
 </html>
