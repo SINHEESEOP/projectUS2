@@ -40,7 +40,7 @@
 </head>
 <body>
 	<script>
-		window.resizeTo(1470,880);
+		
 	</script>
 	
 
@@ -50,6 +50,7 @@
 		<div class="reg-title">
 			<th:block sec:authorize="isAuthenticated()">
 			<h3 class="middle-name">[[${#authentication.principal.username}]]님 안녕하세요</h3>
+			<h6 hidden="hidden" class="authorized">[[${#authentication.principal.username}]]</h6>
 			</th:block>
 		</div>
 		</div>
@@ -66,12 +67,13 @@
 		</div>
 	</div>
 	<script>
+		var currentUser=$(".authorized").text();
+		console.log(currentUser);
+		localStorage.setItem("currentUser",currentUser);
 		
-	
-	$("#homeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
-			location.href="/admin/program/main";
+		$("#homeBtn").click(function(){
+			
+			location.href="/";
 			
 		}); 
 		
@@ -92,8 +94,8 @@
 		});
 		
 		$("#returnBtn").click(function(){
-			var cuser=sessionStorage.getItem("currentUser");
-			var url="toEquipReturn?user="+cuser;
+			
+			var url="toEquipReturn?user="+currentUser;
 			var name="반납하기";
 			var option="width=400,length=300,top=100,left=50,location=no";
 			window.open(url,name,option);
@@ -101,8 +103,8 @@
 		});
 		
 		$("#closeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
+			console.log(1);
+			
 		});
 		
 		
