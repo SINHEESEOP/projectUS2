@@ -69,8 +69,6 @@
 		
 	
 	$("#homeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
 			location.href="/admin/program/main";
 			
 		}); 
@@ -92,7 +90,7 @@
 		});
 		
 		$("#returnBtn").click(function(){
-			var cuser=sessionStorage.getItem("currentUser");
+			var cuser;
 			var url="toEquipReturn?user="+cuser;
 			var name="반납하기";
 			var option="width=400,length=300,top=100,left=50,location=no";
@@ -101,8 +99,7 @@
 		});
 		
 		$("#closeBtn").click(function(){
-			sessionStorage.setItem("currentUser","");
-			window.close();
+			console.log("d");
 		});
 		
 		

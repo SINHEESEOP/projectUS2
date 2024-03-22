@@ -1,6 +1,8 @@
 package com.teamus.medic.controller;
 
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.teamus.medic.User.service.UserMapper;
+import com.teamus.medic.User.service.userService;
 import com.teamus.medic.command.UserVO;
 import com.teamus.medic.securlty.MyUserDetails;
 
@@ -96,6 +99,31 @@ public class MainController {
 		 return "redirect:/LoginPageList";
 	 }
 	 
+	 
+	 @GetMapping("/myPage")
+	 public String myPage (Principal principal,Model model) {
+		 
+		String username =  principal.getName();
+		UserVO vo =  userMapper.login(username);
+		 
+		 
+		 
+		 model.addAttribute("vo",vo);
+		 
+		 return "/myPage";
+		 
+	 }
+	 
+	 @PostMapping("/updateForm")
+	 public String updateForm(UserVO vo) {
+		 
+		
+		 userMapper.updateForm(vo);
+		 
+		 
+		 return "redirect:/";
+	 }
+	 
 	
 	 @GetMapping("/deny")
 	 public @ResponseBody String deny() {
@@ -103,5 +131,7 @@ public class MainController {
 		 return "권한이 없는 페이지입니다.";
 	 }
 	
+	 
+	 
 }
  

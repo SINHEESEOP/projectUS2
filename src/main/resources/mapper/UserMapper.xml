@@ -25,8 +25,16 @@
 		select * from USER where USERNAME = #{USERNAME}
 		
 	</select>
-		
-		
 
+	<update id="updateForm">
+		update user set USER_EML_ADDR = #{USER_EML_ADDR},
+							USER_TELNO = #{USER_TELNO},
+							SCSBJT_NM = #{SCSBJT_NM}
+							where USERNAME = #{USERNAME}
+							
+							
+							
+							
+	</update>
 
 </mapper>
