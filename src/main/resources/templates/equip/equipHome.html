@@ -73,7 +73,7 @@
 		
 		$("#homeBtn").click(function(){
 			
-			location.href="/admin/program/main";
+			location.href="/";
 			
 		}); 
 		
@@ -94,8 +94,8 @@
 		});
 		
 		$("#returnBtn").click(function(){
-			var cuser=sessionStorage.getItem("currentUser");
-			var url="toEquipReturn?user="+cuser;
+			
+			var url="toEquipReturn?user="+currentUser;
 			var name="반납하기";
 			var option="width=400,length=300,top=100,left=50,location=no";
 			window.open(url,name,option);
