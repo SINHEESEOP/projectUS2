@@ -15,22 +15,22 @@ public class MyUserDetailsService implements UserDetailsService{
 
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	
-		
 
-		UserVO vo =  userMapper.login(username);	
+
+
+		UserVO vo =  userMapper.login(username);
 		System.out.println(vo);
-		
+
 		if(vo != null) {
-			
+
 			return new MyUserDetails(vo);
 		}
-		
+
 		return null;
 	}
-	
+
 
 }

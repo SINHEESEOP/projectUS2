@@ -14,15 +14,15 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
-		
-		
+
+
 		 String url = request.getParameter("url");
 		 System.out.println("로그인실패: 요청경로 - " + url);
-		
-		 
+
+
 		 response.sendRedirect( request.getContextPath() + url + "?err=true" );
-		 
-		
+
+
 	}
 
 }

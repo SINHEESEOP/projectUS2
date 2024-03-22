@@ -12,23 +12,23 @@ import com.teamus.medic.command.UserVO;
 public class MyUserDetails implements UserDetails{
 
 	private UserVO userVO;
-	
+
 	public MyUserDetails(UserVO vo) {
 		this.userVO = vo;
 	}
-	
+
 	public String getRole() {
-		
+
 		return userVO.getUSER_ROLE();
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-	
+
 		List<GrantedAuthority> list = new ArrayList<>();
-		
+
 		list.add(()->userVO.getUSER_ROLE());
-		
+
 		return list;
 	}
 
@@ -68,5 +68,5 @@ public class MyUserDetails implements UserDetails{
 		return true;
 	}
 
-	
+
 }

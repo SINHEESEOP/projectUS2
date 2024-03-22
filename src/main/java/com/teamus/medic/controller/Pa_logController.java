@@ -23,7 +23,21 @@ public class Pa_logController {
 
 	@GetMapping("/pa_logDetail")
 	private String Detail() {
-		return 	"admin/pa_log/pa_logDetail";
+		return "admin/pa_log/pa_logDetail";
+	}
+
+	@PostMapping("/logDetailForm")
+	private String logDetailForm(Pa_logVO vo, Model model) {
+
+		System.out.println(vo.getMDEXM_BNO() );
+
+		UserVO userVO = paLogService.getUser(vo.getUSERNAME() );
+		Pa_logVO paLogVO = paLogService.getDetailPaLog(vo.getMDEXM_BNO() );
+
+		model.addAttribute("userVo", userVO);
+		model.addAttribute("paLogVO", paLogVO);
+
+		return "admin/pa_log/pa_logDetail";
 	}
 
 	// 진단목록 확인 페이지.
