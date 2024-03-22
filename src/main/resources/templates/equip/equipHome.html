@@ -71,11 +71,11 @@
 		console.log(currentUser);
 		localStorage.setItem("currentUser",currentUser);
 		
-		$("#homeBtn").click(function(){
-			
-			location.href="/";
-			
-		}); 
+
+	$("#homeBtn").click(function(){
+    
+		  location.href="/";
+	}); 
 		
 		
 		
@@ -96,16 +96,13 @@
 		$("#returnBtn").click(function(){
 			
 			var url="toEquipReturn?user="+currentUser;
+
 			var name="반납하기";
 			var option="width=400,length=300,top=100,left=50,location=no";
 			window.open(url,name,option);
 			
 		});
 		
-		$("#closeBtn").click(function(){
-			console.log(1);
-			
-		});
 		
 		
 	</script>
