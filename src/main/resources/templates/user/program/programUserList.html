@@ -2,7 +2,14 @@
 
 <link rel="stylesheet" href="/css/programList.css">
 
-<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+<style>
+.wrap {
+	margin-top: 300px;
+}
+</style>
+
+
+<th:block th:replace="~{./include/header :: setContent(~{ :: .wrap})}">
 	
 	<div class="wrap">
      <div class="reg-title">

@@ -2,7 +2,13 @@
 
 <link rel="stylesheet" href="/css/programReg.css">
 
-<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+<style>
+.wrap {
+	margin-top: 300px;
+}
+</style>
+
+<th:block th:replace="~{./include/header :: setContent(~{ :: .wrap})}">
 	 <div class="wrap">
       <div class="reg-title">
         <p>프로그램 상세정보</p>

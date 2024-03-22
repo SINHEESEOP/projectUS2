@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.teamus.medic.User.service.UserMapper;
-import com.teamus.medic.User.service.userService;
 import com.teamus.medic.command.UserVO;
 import com.teamus.medic.securlty.MyUserDetails;
 

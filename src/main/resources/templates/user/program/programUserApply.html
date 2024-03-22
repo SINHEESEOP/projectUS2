@@ -2,15 +2,20 @@
 
 <link rel="stylesheet" href="/css/programList.css">
 
+<style>
+.wrap {
+	margin-top: 300px;
+}
+</style>
 	
-<th:block th:replace="~{./include/baseLayout :: setContent(~{ :: .wrap})}">
+<th:block th:replace="~{./include/header :: setContent(~{ :: .wrap})}">
 
 	
 	<div class="wrap">
      <div class="reg-title">
         <p>프로그램 신청내역 조회</p>
       </div>
-    <div class="middle">
+    <div class="middle">	
       <div class="total">
       <p>프로그램 총 신청횟수 : [[${pageVO.total}]]</p>
       </div>
