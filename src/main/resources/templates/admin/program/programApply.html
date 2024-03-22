@@ -15,6 +15,7 @@
       </div>
       <div class="search">
         <form name="programApply" action="programApply" method="get">
+       
         <input type="hidden" name="pageNum" value='1'>
         <input type="hidden" name="amount" th:value="${pageVO.amount}">
         
@@ -66,7 +67,7 @@
       	<a th:href="@{programApply(pageNum=${pageVO.startPage - 1},amount=${pageVO.amount},searchContent=${pageVO.cri.searchContent},searchValue=${pageVO.cri.searchValue})}">prev</a>
       </li>
       </th:block>  	
-      
+ 
       <th:block th:each="page: ${pageVO.pageList}">
       <li th:class="${pageVO.pageNum == page ? 'on' : ''}">
       <a th:href="@{programApply(pageNum=${page},amount=${pageVO.amount},searchContent=${pageVO.cri.searchContent},searchValue=${pageVO.cri.searchValue})}">[[${page}]]</a>
